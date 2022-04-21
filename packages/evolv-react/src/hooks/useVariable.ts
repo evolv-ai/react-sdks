@@ -42,6 +42,6 @@ export function useVariable<T = any>(variableName: string, control: T): T {
   const variableRealName: string = splitted[1];
 
   const evolvContext: EvolvContextInterface = useContext(EvolvContext);
-  const variable = getVariableData(groupName, variableRealName, evolvContext, control)
+  const variable = getVariableData(groupName, variableRealName, evolvContext, control);
   return variable;
 }

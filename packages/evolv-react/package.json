@@ -2,8 +2,8 @@
   "name": "@evolv/react",
   "version": "0.0.0",
   "type": "module",
-  "main": "./src/index.tsx",
-  "types": "./src/index.tsx",
+  "main": "./dist/index.js",
+  "types": "./dist/index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsup src/index.ts --format cjs --dts",
