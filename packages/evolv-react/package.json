@@ -1,12 +1,13 @@
 {
   "name": "@evolv/react",
   "version": "0.0.0",
+  "type": "module",
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "license": "MIT",
   "scripts": {
     "build": "tsup src/index.ts --format cjs --dts",
-    "dev": "tsup src/index.ts --dts --watch"
+    "dev": "tsup src/index.ts --format esm,cjs,iife --dts --watch"
   },
   "repository": {
     "type": "git",

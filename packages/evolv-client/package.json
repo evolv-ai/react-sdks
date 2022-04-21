@@ -1,12 +1,13 @@
 {
   "name": "@evolv/client",
   "version": "0.0.0",
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs --dts",
-    "dev": "tsup src/index.ts --dts --watch",
+    "build": "tsup src/index.ts --format esm,cjs,iife --dts",
+    "dev": "tsup src/index.ts --format esm,cjs,iife --dts --watch",
     "postinstall": "node ./postinstall.js"
   },
   "tsup": {

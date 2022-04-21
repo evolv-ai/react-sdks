@@ -1,4 +1,5 @@
-var fs = require('fs');
+// var fs = require('fs');
+import fs from 'fs';
 
 function readWriteSync() {
   var newSrc =
