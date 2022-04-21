@@ -23,6 +23,7 @@ export class EvolvClient {
       enviromentId: options.enviromentId,
       sessionId: options.sessionId,
       userId: options.userId,
+      useSessions: this.options.useSessions || false
     });
     this.sdk = sdk;
     this.sessionId = sessionId;

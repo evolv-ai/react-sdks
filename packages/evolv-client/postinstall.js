@@ -1,5 +1,7 @@
-// var fs = require('fs');
 import fs from 'fs';
+import path from 'path';
+
+var pathName = path.resolve('../../', '@evolv/javascript-sdk/src/retrieve.js');
 
 function readWriteSync() {
   var newSrc =
@@ -237,7 +239,9 @@ export default function retrieve(opts, hooks) {
 }
 `;
 
-  fs.writeFileSync('./node_modules/@evolv/javascript-sdk/src/retrieve.js', newSrc, 'utf-8');
+  if (pathName && fs.existsSync(pathName)) {
+    fs.writeFileSync(pathName, newSrc, 'utf-8');
+  }
 }
 
 readWriteSync();

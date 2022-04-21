@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { EvolvClient } from '@evolv/client';
+import type { EvolvClient } from '@evolv-delivery-tools/client';
 
 import { EvolvContextInterface } from '@types';
 

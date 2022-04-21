@@ -2,6 +2,7 @@ export interface EvolvClientOptions {
   enviromentId: string;
   sessionId?: string;
   userId?: string;
+  useSessions?: boolean;
 }
 
 export interface IExperimentOptions {

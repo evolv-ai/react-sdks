@@ -4,6 +4,7 @@
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "target": "es5",
+    "module": "CommonJS",
     "lib": ["es2015", "es2017", "dom"],
     "paths": {
       "@types": ["./types/index.ts"]

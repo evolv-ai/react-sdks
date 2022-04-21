@@ -1,8 +1,8 @@
 {
-  "name": "@evolv/client",
-  "version": "0.0.0",
+  "name": "@evolv-delivery-tools/client",
+  "version": "0.1.2",
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "types": "./dist/index.js",
   "license": "MIT",
   "scripts": {
@@ -11,14 +11,16 @@
     "postinstall": "node ./postinstall.js"
   },
   "tsup": {
-    "entry": ["src/index.ts"],
+    "entry": [
+      "src/index.ts"
+    ],
     "splitting": false,
     "sourcemap": true,
     "clean": true
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/evolv-ai/delivery"
+    "url": "git+https://github.com/evolv-ai/delivery.git"
   },
   "devDependencies": {
     "config": "workspace:*",
@@ -29,5 +31,11 @@
   "dependencies": {
     "@evolv/javascript-sdk": "^1.19.4",
     "ulid": "^2.3.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/evolv-ai/delivery/issues"
+  },
+  "homepage": "https://github.com/evolv-ai/delivery#readme",
+  "description": "Javascript client for connecting to Evolv AI",
+  "author": "timothy.cubbedge@evolv.ai"
 }

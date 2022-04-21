@@ -1,4 +1,4 @@
-import type { EvolvClient } from "@evolv/client"
+import type { EvolvClient } from "@evolv-delivery-tools/client"
 
 export interface EvolvContextInterface {
   client?: EvolvClient

@@ -1,6 +1,6 @@
 {
-  "name": "@evolv/react",
-  "version": "0.0.0",
+  "name": "@evolv-delivery-tools/react",
+  "version": "0.1.2",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/evolv-ai/delivery"
+    "url": "git+https://github.com/evolv-ai/delivery.git"
   },
   "dependencies": {
     "react-is": "^18.0.0",
     "tsup": "^5.12.5"
   },
   "devDependencies": {
-    "@evolv/client": "workspace:*",
+    "@evolv-delivery-tools/client": "0.1.1",
     "@types/react-is": "^17.0.3",
     "config": "workspace:*",
     "react": "^17.0.2",
@@ -26,6 +26,12 @@
     "typescript": "^4.5.3"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
-  }
+    "react": ">=17.0.2"
+  },
+  "bugs": {
+    "url": "https://github.com/evolv-ai/delivery/issues"
+  },
+  "homepage": "https://github.com/evolv-ai/delivery#readme",
+  "description": "React SDK for Evolv AI",
+  "author": "timothy.cubbedge@evolv.ai"
 }

@@ -39,8 +39,8 @@ importers:
 
   examples/example-next:
     specifiers:
-      '@evolv/client': workspace:*
-      '@evolv/react': workspace:*
+      '@evolv-delivery-tools/client': workspace:*
+      '@evolv-delivery-tools/react': workspace:*
       '@types/node': ^17.0.12
       '@types/react': 17.0.37
       config: workspace:*
@@ -53,8 +53,8 @@ importers:
       typescript: ^4.5.3
       ui: workspace:*
     dependencies:
-      '@evolv/client': link:../../packages/evolv-client
-      '@evolv/react': link:../../packages/evolv-react
+      '@evolv-delivery-tools/client': link:../../packages/evolv-client
+      '@evolv-delivery-tools/react': link:../../packages/evolv-react
       next: 12.0.8_react-dom@17.0.2+react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -97,7 +97,7 @@ importers:
 
   packages/evolv-react:
     specifiers:
-      '@evolv/client': workspace:*
+      '@evolv-delivery-tools/client': 0.0.5
       '@types/react-is': ^17.0.3
       config: workspace:*
       react: ^17.0.2
@@ -109,7 +109,7 @@ importers:
       react-is: 18.0.0
       tsup: 5.12.5_typescript@4.6.3
     devDependencies:
-      '@evolv/client': link:../evolv-client
+      '@evolv-delivery-tools/client': 0.0.5
       '@types/react-is': 17.0.3
       config: link:../config
       react: 17.0.2
@@ -208,9 +208,16 @@ packages:
       - supports-color
     dev: true
 
+  /@evolv-delivery-tools/client/0.0.5:
+    resolution: {integrity: sha512-70fvQ8mcw989I5j16gVKjuPK6SWewJsiRbWOD0ICv/jhLzpgRLNpECW30QgCohnKbVnpai8/Z0W25gwHD5Sasg==}
+    requiresBuild: true
+    dependencies:
+      '@evolv/javascript-sdk': 1.19.4
+      ulid: 2.3.0
+    dev: true
+
   /@evolv/hashing/1.1.0:
     resolution: {integrity: sha512-PhqiRNwX+0hxl1Y94ytmDVMbqeG3l2JMJ1Ip4BznQr7cGd36YIfl4glb+W9lgaN/p22+TAhCapzUFfIlpVOGbw==}
-    dev: false
 
   /@evolv/javascript-sdk/1.19.4:
     resolution: {integrity: sha512-1Jb3gdnjeCe0NTyinLk2sqxDbYh69z+0lomeAJXh142vus29lyo2Szw7R6OnQh/6MjKzBulXi5rJgApKkYJcsA==}
@@ -219,7 +226,6 @@ packages:
       '@evolv/hashing': 1.1.0
       base64-arraybuffer: 0.2.0
       deepmerge: 4.2.2
-    dev: false
 
   /@humanwhocodes/config-array/0.5.0:
     resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==}
@@ -620,7 +626,6 @@ packages:
   /base64-arraybuffer/0.2.0:
     resolution: {integrity: sha512-7emyCsu1/xiBXgQZrscw/8KPRT44I4Yq9Pe6EGs3aPRTsWuggML1/1DTuZUuIaJPIm1FTDUVXl4x/yW8s0kQDQ==}
     engines: {node: '>= 0.6.0'}
-    dev: false
 
   /big.js/5.2.2:
     resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}
@@ -791,7 +796,6 @@ packages:
   /deepmerge/4.2.2:
     resolution: {integrity: sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==}
     engines: {node: '>=0.10.0'}
-    dev: false
 
   /define-properties/1.1.4:
     resolution: {integrity: sha512-uckOqKcfaVvtBdsVkdPv3XjveQJsNQqmhXgRi8uhvWWuPYZCNlzT8qAyblUgNoXdHdjMTzAqeGjAoli8f+bzPA==}
@@ -2749,7 +2753,6 @@ packages:
   /ulid/2.3.0:
     resolution: {integrity: sha512-keqHubrlpvT6G2wH0OEfSW4mquYRcbe/J8NMmveoQOjUqmo+hXtO+ORCpWhdbZ7k72UtY61BL7haGxW6enBnjw==}
     hasBin: true
-    dev: false
 
   /unbox-primitive/1.0.1:
     resolution: {integrity: sha512-tZU/3NqK3dA5gpE1KtyiJUrEB0lxnGkMFHptJ7q6ewdZ8s12QrODwNbhIJStmJkd1QDXa1NRA8aF2A1zk/Ypyw==}
