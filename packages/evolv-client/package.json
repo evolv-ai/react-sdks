@@ -1,0 +1,31 @@
+{
+  "name": "@evolv/client",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs --dts",
+    "dev": "tsup src/index.ts --dts --watch"
+  },
+  "tsup": {
+    "entry": ["src/index.ts"],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evolv-ai/delivery"
+  },
+  "devDependencies": {
+    "config": "workspace:*",
+    "tsconfig": "workspace:*",
+    "tsup": "^5.12.5",
+    "typescript": "^4.5.3"
+  },
+  "dependencies": {
+    "@evolv/javascript-sdk": "^1.19.4",
+    "ulid": "^2.3.0"
+  }
+}

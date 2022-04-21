@@ -1,0 +1,30 @@
+{
+  "name": "@evolv/react",
+  "version": "0.0.0",
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs --dts",
+    "dev": "tsup src/index.ts --dts --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evolv-ai/delivery"
+  },
+  "dependencies": {
+    "react-is": "^18.0.0",
+    "tsup": "^5.12.5"
+  },
+  "devDependencies": {
+    "@evolv/client": "workspace:*",
+    "@types/react-is": "^17.0.3",
+    "config": "workspace:*",
+    "react": "^17.0.2",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.5.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  }
+}
