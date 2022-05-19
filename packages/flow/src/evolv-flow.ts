@@ -1,20 +1,16 @@
+import { createObserver } from "./utils";
+
 class EvolvFlow {
   constructor() {
-    const domObserver = new MutationObserver(() => {
-      this.runCallbacks()
-    })
-    domObserver.observe(document.body, {
-      childList: true,
-      subtree: true
-    })
+    createObserver(this.runCallbacks)
   }
 
   private runCallbacks = () => {
     this.handlers.forEach(handler => {
       try {
         handler();
-      } catch (e) {
-        this.reportCallbackError(e);
+      } catch (e: any) {
+        this.reportCallbackError(e as Error);
       }
     })
   }
@@ -25,11 +21,11 @@ class EvolvFlow {
 
   private handlers: Function[] = [];
 
-  public subscribe = (callback) => {
+  public subscribe = (callback: Function) => {
     this.handlers.push(callback);
   }
 
-  public unsubscribe = (callback) => {
+  public unsubscribe = (callback: Function) => {
     this.handlers = this.handlers.filter(handler => handler !== callback);
   }
 
