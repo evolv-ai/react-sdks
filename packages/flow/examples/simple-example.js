@@ -32,4 +32,3 @@ matchUrl(/\/products\/selected\/*/, () => {
   });
 
 });
-
