@@ -23,6 +23,7 @@ class EvolvFlow {
 
   public subscribe = (callback: Function) => {
     this.handlers.push(callback);
+    callback();
   }
 
   public unsubscribe = (callback: Function) => {
