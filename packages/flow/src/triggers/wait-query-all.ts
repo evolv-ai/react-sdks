@@ -7,10 +7,10 @@ export const waitQueryAll: WaitQueryAll = (query, callback) => {
   const uuid = flowInstance.getUuid()
   const elements: Element[] = [];
   const matchCallback = () => {
-    const newElements = getElementAll(`${query.trim()}:not([data-evolv-flow-id="${uuid}"])`);
+    const newElements = getElementAll(`${query.trim()}:not([data-evolv-flow-${uuid}])`);
     if(newElements.length > 0) {
       newElements.forEach(element => {
-        element.setAttribute('data-evolv-flow-id', uuid);
+        element.setAttribute(`data-evolv-flow-${uuid}`, "");
         elements.push(element);
       });
       callback(newElements, elements)

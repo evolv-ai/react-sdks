@@ -2,7 +2,7 @@ import { createObserver } from "./utils";
 
 class EvolvFlow {
   constructor() {
-    createObserver(this.runCallbacks)
+    createObserver(document.body, this.runCallbacks)
   }
 
   private runCallbacks = () => {

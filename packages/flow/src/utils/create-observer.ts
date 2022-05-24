@@ -1,25 +1,17 @@
-export interface createObserverOptions {
-  element?: Element
-  observerOptions?: MutationObserverInit
-}
+export type CreateObserver = (element: Element, callback: Function, options?: MutationObserverInit) => MutationObserver;
 
-export type CreateObserver = (callback: Function, options?: createObserverOptions) => MutationObserver;
-
-export const createObserver = (
-  callback: Function,
-  {
-    element,
-    observerOptions
-  }: createObserverOptions = {}
+export const createObserver: CreateObserver = (
+  element,
+  callback,
+  options
   ) => {
   const domObserver = new MutationObserver(() => {
     callback();
   })
-  domObserver.observe(element || document.body, observerOptions || {
+  domObserver.observe(element, options || {
     childList: true,
     subtree: true,
-    attributes: true, 
-    attributeFilter: ['class']
+    attributes: true
   })
   return domObserver;
 }
