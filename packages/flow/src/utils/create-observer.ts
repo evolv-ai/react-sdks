@@ -1,11 +1,25 @@
-// @TODO passing options to customize the observer and element (callback, params: {element, options})
+export interface createObserverOptions {
+  element?: Element
+  observerOptions?: MutationObserverInit
+}
 
-export const createObserver = (callback: Function, element?: Element) => {
+export type CreateObserver = (callback: Function, options?: createObserverOptions) => MutationObserver;
+
+export const createObserver = (
+  callback: Function,
+  {
+    element,
+    observerOptions
+  }: createObserverOptions = {}
+  ) => {
   const domObserver = new MutationObserver(() => {
     callback();
   })
-  domObserver.observe(element || document.body, {
+  domObserver.observe(element || document.body, observerOptions || {
     childList: true,
-    subtree: true
+    subtree: true,
+    attributes: true, 
+    attributeFilter: ['class']
   })
+  return domObserver;
 }

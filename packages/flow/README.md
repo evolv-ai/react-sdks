@@ -37,9 +37,9 @@ flow.waitQuery(".my-element", function(element) {
 
 From now on, the docs will use ES6 for the examples. Rember to use ES5 in the experiments.
 
-## Usage
+# Usage
 
-### waitQuery
+## waitQuery
 Wait for an element to be present in the DOM. **This function will run only once.**
 
 > waitQuery(selector, callback(element))
@@ -52,7 +52,7 @@ waitQuery('#my-popup-form .cta', (element) => {
 });
 ```
 
-### waitQueryAll
+## waitQueryAll
 
 Loos for elements to be present in the DOM. If a new element that matches the selector is found, the callback will be called with the added elements and all the elements that match the selector.
 
