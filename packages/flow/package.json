@@ -1,6 +1,6 @@
 {
   "name": "@evolv-ai/flow",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,19 +16,23 @@
     "url": "https://github.com/evolv-ai/delivery-clients"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.9",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
-    "@babel/core": "^7.17.9",
+    "@babel/runtime": "^7.6.3",
     "babel-loader": "^8.2.5",
-    "@swc/core": "^1.2.186",
     "clean-webpack-plugin": "^4.0.0",
     "fork-ts-checker-webpack-plugin": "^7.2.11",
-    "swc-loader": "^0.2.1",
     "ts-loader": "^9.3.0",
     "typescript": "^4.5.3",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "core-js": "^3.22.6"
   }
 }

@@ -29,7 +29,7 @@ const baseConfig = {
     ignored: /node_modules/,
   },
   optimization: {
-    minimize: false
+    minimize: true
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
