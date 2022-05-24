@@ -110,15 +110,13 @@ waitQuery('#my-popup-form', (container) => {
   }
 });
 ```
-
-If the container is null, the function will not throw an error.
-
+Or
 ```ts
-const container = getElement("#non-existent-container");
-const innerElement = getElement("button", container);
+const container = getElement("#some-container");
 
-console.log(container, innerElement)
-// null, null
+if(container) {
+  const innerElement = getElement("button", container);
+}
 ```
 
 ## getElementAll
@@ -137,9 +135,129 @@ rows.forEach((row) => {
 });
 ```
 
-## Pending docs
-- listenEvent
-- matchUrl
-- onDomChange
-- createObserver
-- setContext
+## listenEvent
+
+Listen for an event and filter by a selector. This method will not attach a listener to that element, insead, it will attach a listener to the document and check if the target element matches the selector.
+
+```ts
+listenEvent = (event: keyof HTMLElementEventMap, selector: string, callback: (event: Event) => void, options?: { once?: boolean, continer?: Element })
+```
+
+Example:
+
+```ts
+import { listenEvent } from '@evolv-ai/flow';
+listenEvent('click', '#my-popup-form .cta', (event) => {
+  event.preventDefault();
+  console.log('Clicked!');
+});
+```
+
+Options:
+- once: if true, the callback will be called only once.
+- continer: if you want to listen inside a specific element.
+
+```ts
+import { waitQuery, listenEvent } from '@evolv-ai/flow';
+
+waitQuery('#my-popup', (formEl) => {
+  listenEvent('click', '.cta', (e) => {
+    e.preventDefault();
+    console.log('Clicked!');
+  }, { continer: formEl, once: true });
+});
+```
+
+## matchUrl
+
+Test if the current url matches a regex.
+
+```ts
+matchUrl(regex: RegExp): boolean
+```
+
+```ts
+import { matchUrl } from '@evolv-ai/flow';
+
+matchUrl(/checkout/, () => {
+  console.log('Checkout page!');
+});
+```
+
+## onDomChange
+
+Triggers a callback whenever the DOM changes.
+
+```ts
+onDomChange = (callback: () => void, container?: Element) => void
+```
+
+```ts
+import { onDomChange } from '@evolv-ai/flow';
+
+onDomChange(() => {
+  console.log('DOM changed!');
+});
+```
+
+You can pass a custom element to be observed.
+If an element is not passed, it will suscribe to the global listener.
+
+```ts
+import { onDomChange, getElement } from '@evolv-ai/flow';
+
+waitQuery('#my-container', (containerEl) => {
+  onDomChange(() => {
+    console.log('DOM changed!');
+  }, containerEl);
+});
+```
+
+## createObserver
+
+Creates an observer
+
+```ts
+createObserver = (
+  element: Element,
+  callback: () => void,
+  options?: MutationObserverInit) => MutationObserver
+```
+
+```ts
+import { waitQuery, createObserver } from '@evolv-ai/flow';
+
+waitQuery('#popup-form', (myFormEl) => {
+  createObserver(myFormEl, () => {
+    console.log('DOM changed!');
+  });
+})
+```
+
+You can pass custom options to the observer
+
+```ts
+import { waitQuery, createObserver } from '@evolv-ai/flow';
+
+waitQuery('#an-input', (myFormEl) => {
+  createObserver(myFormEl, () => {
+    console.log('attribute changed!');
+  });
+}, {
+  childlist: false,
+  attributes: true,
+})
+```
+
+## setContext
+An util for setting an evolv context variable.
+
+```ts
+setContext = (key: string, value: string) => void
+```
+
+```ts
+import { setContext } from '@evolv-ai/flow';
+
+setContext('my-key', 'my-value');
+```
