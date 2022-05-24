@@ -43,7 +43,6 @@ const baseConfig = {
 module.exports = (env, argv) => {
   const config = baseConfig
   if(argv && argv.mode === "production") {
-    console.log('PROOOOOD');
     config.mode = "production";
     config.devtool = "source-map";
   } else {
