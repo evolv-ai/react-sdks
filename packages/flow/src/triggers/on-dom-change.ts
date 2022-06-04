@@ -1,4 +1,4 @@
-import { flowInstance } from "../evolv-flow";
+import { flowInstance } from "../core";
 import { createObserver } from "../utils"
 
 export const onDomChange = (callback: Function, container?: Element) => {

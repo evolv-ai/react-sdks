@@ -16,5 +16,5 @@
     "emitDeclarationOnly": true
   },
   "exclude": ["node_modules"],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "jest.config.ts", "jest-setup-after-env.ts"],
 }

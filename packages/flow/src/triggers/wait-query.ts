@@ -1,4 +1,4 @@
-import { flowInstance } from "../evolv-flow";
+import { flowInstance } from "../core";
 
 export type WaitQueryCallback = (element: Element) => void
 export type WaitQuery = (query: string, callback: WaitQueryCallback) => void

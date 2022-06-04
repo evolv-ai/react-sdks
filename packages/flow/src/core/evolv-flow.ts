@@ -1,6 +1,6 @@
-import { createObserver } from "./utils";
+import { createObserver } from "../utils";
 
-class EvolvFlow {
+export class EvolvFlow {
   constructor() {
     createObserver(document.body, this.runCallbacks)
   }

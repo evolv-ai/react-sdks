@@ -1,5 +1,5 @@
 import { getElementAll } from "../utils";
-import { flowInstance } from "../evolv-flow";
+import { flowInstance } from "../core";
 
 export type WaitQueryAllCallback = (newElements: Element[], elements: Element[]) => void
 export type WaitQueryAll = (query: string, callback: WaitQueryAllCallback) => void

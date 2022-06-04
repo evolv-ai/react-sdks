@@ -5,12 +5,12 @@ Utils for front end DOM manipulation.
 
 To use evolv-flow in an integration, install the package.
 ```bash
-npm i @evolv-ai/flow
+npm i @evolv-delivery-tools/flow
 ```
 The, import it in your integration's code.
 
 ```ts
-import { waitQuery } from "@evolv/flow";
+import { waitQuery } from '@evolv-delivery-tools/flow';
 waitQuery(".my-element", (element) => {
   element.innerHTML = "Hello world!";
 });
@@ -21,7 +21,7 @@ To use evolv-flow in an experiment, add the package on the evolvEditor using the
 
 File > Project Settings > Dependencies > Add Dependency.
 
-Add @evolv-ai/flow as an NPM module and set the alias to `flow`.
+Add @evolv-delivery-tools/flow as an NPM module and set the alias to `flow`.
 
 Then, use it in any of your experiment's variants.
 
@@ -45,7 +45,7 @@ Wait for an element to be present in the DOM. **This function will run only once
 > waitQuery(selector, callback(element))
 
 ```ts
-import { waitQuery } from '@evolv-ai/flow';
+import { waitQuery } from '@evolv-delivery-tools/flow';
 
 waitQuery('#my-popup-form .cta', (element) => {
   element.innerHTML = 'Click me!';
@@ -61,7 +61,7 @@ Loos for elements to be present in the DOM. If a new element that matches the se
 This method could be usefull with infinite scrolls.
 
 ```ts
-import { waitQueryAll } from '@evolv-ai/flow';
+import { waitQueryAll } from '@evolv-delivery-tools/flow';
 
 waitQueryAll('.infinite-scroll-container .item', (newElements, allElements) => {
   newElements.forEach((element) => {
@@ -90,7 +90,7 @@ getElement(query: string, container?: Element): Element | null
 ```
 
 ```ts
-import { getElement } from '@evolv/flow';
+import { getElement } from '@evolv-delivery-tools/flow';
 
 const element = getElement("#selector");
 if(element) {
@@ -101,7 +101,7 @@ if(element) {
 You can pass a container to search in.
 
 ```ts
-import { waitQuery, getElement } from '@evolv/flow';
+import { waitQuery, getElement } from '@evolv-delivery-tools/flow';
 
 waitQuery('#my-popup-form', (container) => {
   const element = getElement("button[type='submit']", container);
@@ -127,7 +127,7 @@ Similar to getElement, but returns all the elements that match the query in an a
 getElementAll(query: string, container?: Element): Element[]
 ```
 ```ts
-import { getElementAll } from '@evolv/flow';
+import { getElementAll } from '@evolv-delivery-tools/flow';
 
 const rows = getElementAll("ul.list li");
 rows.forEach((row) => {
@@ -146,7 +146,7 @@ listenEvent = (event: keyof HTMLElementEventMap, selector: string, callback: (ev
 Example:
 
 ```ts
-import { listenEvent } from '@evolv-ai/flow';
+import { listenEvent } from '@evolv-delivery-tools/flow';
 listenEvent('click', '#my-popup-form .cta', (event) => {
   event.preventDefault();
   console.log('Clicked!');
@@ -158,7 +158,7 @@ Options:
 - continer: if you want to listen inside a specific element.
 
 ```ts
-import { waitQuery, listenEvent } from '@evolv-ai/flow';
+import { waitQuery, listenEvent } from '@evolv-delivery-tools/flow';
 
 waitQuery('#my-popup', (formEl) => {
   listenEvent('click', '.cta', (e) => {
@@ -177,7 +177,7 @@ matchUrl(regex: RegExp): boolean
 ```
 
 ```ts
-import { matchUrl } from '@evolv-ai/flow';
+import { matchUrl } from '@evolv-delivery-tools/flow';
 
 matchUrl(/checkout/, () => {
   console.log('Checkout page!');
@@ -193,7 +193,7 @@ onDomChange = (callback: () => void, container?: Element) => void
 ```
 
 ```ts
-import { onDomChange } from '@evolv-ai/flow';
+import { onDomChange } from '@evolv-delivery-tools/flow';
 
 onDomChange(() => {
   console.log('DOM changed!');
@@ -204,7 +204,7 @@ You can pass a custom element to be observed.
 If an element is not passed, it will suscribe to the global listener.
 
 ```ts
-import { onDomChange, getElement } from '@evolv-ai/flow';
+import { onDomChange, getElement } from '@evolv-delivery-tools/flow';
 
 waitQuery('#my-container', (containerEl) => {
   onDomChange(() => {
@@ -225,7 +225,7 @@ createObserver = (
 ```
 
 ```ts
-import { waitQuery, createObserver } from '@evolv-ai/flow';
+import { waitQuery, createObserver } from '@evolv-delivery-tools/flow';
 
 waitQuery('#popup-form', (myFormEl) => {
   createObserver(myFormEl, () => {
@@ -237,7 +237,7 @@ waitQuery('#popup-form', (myFormEl) => {
 You can pass custom options to the observer
 
 ```ts
-import { waitQuery, createObserver } from '@evolv-ai/flow';
+import { waitQuery, createObserver } from '@evolv-delivery-tools/flow';
 
 waitQuery('#an-input', (myFormEl) => {
   createObserver(myFormEl, () => {
@@ -257,7 +257,7 @@ setContext = (key: string, value: string) => void
 ```
 
 ```ts
-import { setContext } from '@evolv-ai/flow';
+import { setContext } from '@evolv-delivery-tools/flow';
 
 setContext('my-key', 'my-value');
 ```
