@@ -1,10 +1,10 @@
 {
   "name": "@evolv-delivery-tools/flow",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "files": [
     "dist"
   ],
