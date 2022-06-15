@@ -9,11 +9,13 @@
     "build": "tsup src/index.ts --format cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs,iife --dts --watch"
   },
+  "postinstall": "node ./postinstall.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/evolv-ai/delivery"
   },
   "dependencies": {
+    "@evolv/javascript-sdk": "^1.19.4",
     "react-is": "^18.0.0",
     "tsup": "^5.12.5"
   },

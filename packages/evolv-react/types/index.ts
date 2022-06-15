@@ -1,4 +1,4 @@
-import type { EvolvClient } from "@evolv/client"
+import type EvolvClient from "@evolv/javascript-sdk"
 
 export interface EvolvContextInterface {
   client?: EvolvClient
@@ -21,3 +21,42 @@ export interface variableDataInterface {
   activeVariant: string | null
   is: variableIsType
 }
+export interface EvolvSdkOptions {
+  environment: string;
+  endpoint: string;
+  lazyUid: boolean;
+  requireConsent: boolean;
+  js: boolean;
+  css: boolean;
+  pushstate: boolean;
+  version: number;
+  autoConfirm: boolean;
+  analytics: boolean;
+  bufferEvents: boolean;
+  clientName: string;
+  uid?: string;
+  sid?: string;
+  useCookies?: boolean;
+  timeout?: number;
+  hooks: {};
+}
+
+export interface EvolvClientOptions {
+  environmentId: string;
+  sessionId: string;
+  userId: string;
+  isServer: Boolean;
+  initialState?: any;
+}
+
+// declare module '@evolv/javascript-sdk' {
+//   class EvolvSdk {
+//     constructor(options: EvolvSdkOptions): EvolvSdk;
+//     get: (key: string) => Promise<any>
+//     initialize: (sessionId: string, userId: string) => void
+//     confirm: () => Promise<any>
+//     emit: (event: string) => Promise<any>
+//   }
+
+//   export default EvolvSdk;
+// }
