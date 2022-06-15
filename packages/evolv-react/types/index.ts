@@ -48,15 +48,3 @@ export interface EvolvClientOptions {
   isServer: Boolean;
   initialState?: any;
 }
-
-// declare module '@evolv/javascript-sdk' {
-//   class EvolvSdk {
-//     constructor(options: EvolvSdkOptions): EvolvSdk;
-//     get: (key: string) => Promise<any>
-//     initialize: (sessionId: string, userId: string) => void
-//     confirm: () => Promise<any>
-//     emit: (event: string) => Promise<any>
-//   }
-
-//   export default EvolvSdk;
-// }
