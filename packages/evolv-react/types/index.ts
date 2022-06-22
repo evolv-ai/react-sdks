@@ -14,7 +14,7 @@ export interface IEvolvVariables {
 
 export interface variableIsType {
   [key: string]: boolean
-} 
+}
 
 export interface variableDataInterface {
   exists: boolean
@@ -43,8 +43,17 @@ export interface EvolvSdkOptions {
 
 export interface EvolvClientOptions {
   environmentId: string;
-  sessionId: string;
   userId: string;
-  isServer: Boolean;
+  isServer?: Boolean;
   initialState?: any;
+}
+declare global {
+  namespace React {
+    interface ComponentClass<P = {}> {
+      getInitialProps?(ctx: any): any;
+    }
+    interface FunctionComponent<P = {}> {
+      getInitialProps?(ctx: any): any;
+    }
+  }
 }

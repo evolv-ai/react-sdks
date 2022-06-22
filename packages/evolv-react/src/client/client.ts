@@ -3,12 +3,12 @@ import { EvolvClientOptions } from '@types';
 
 export class EvolvClient {
   public client: EvolvSdk;
+  public context: any;
 
   public options: EvolvClientOptions;
   public environmentId: string;
-  public sessionId: string;
   public userId: string;
-  public isServer: Boolean;
+  public isServer?: Boolean;
   public evolvState: any = {};
   public subscribers: { [key: string]: Function[] };
 
@@ -17,7 +17,6 @@ export class EvolvClient {
     this.isServer = options.isServer || false;
     this.environmentId = options.environmentId;
     this.userId = options.userId;
-    this.sessionId = options.sessionId;
     this.evolvState = options.initialState || {};
     this.subscribers = {};
 
@@ -29,10 +28,6 @@ export class EvolvClient {
         throw new Error(`EvolvClient: Must pass 'userId'`);
     }
 
-    if (!options.sessionId || `${options.sessionId}` === 'false' || `${options.sessionId}` === 'null') {
-        throw new Error(`EvolvClient: Must pass 'sessionId'`);
-    }
-
     this.client = new EvolvSdk({
         environment: this.environmentId,
         autoConfirm: true,
@@ -40,7 +35,7 @@ export class EvolvClient {
         clientName: 'react-sdk'
     });
 
-    this.client.initialize(this.userId, this.sessionId, {}, {});
+    this.client.initialize(this.userId, this.userId);
   }
 
   public getKeys = async () => {
@@ -53,10 +48,7 @@ export class EvolvClient {
     }
   }
 
-  public getVariableByKey = async (key: string) => {
-    const result = await this.client.get(key);
-    return result;
-  } 
+  public getVariableByKey = async (key: string) => await this.client.get(key);
 
   public subscribeToKey = (key:string, cb: Function) => {
     if (this.subscribers[key]) {

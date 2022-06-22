@@ -23,9 +23,22 @@ declare module '@evolv/javascript-sdk' {
     constructor(options: EvolvSdkOptions): EvolvSdk;
     get: (key: string) => Promise<any> | any
     getActiveKeys(keys?: string[]): Promise<any>
-    initialize: (sessionId: string, userId: string, remoteContext: any, localContext: any) => void
+    initialize: (sessionId: string, sid: string) => void
     confirm: () => void
     emit: (event: string) => void
+    context: EvolvSdkContext
+  }
+
+  interface EvolvSdkContext {
+    initialize: Function
+    destroy: Function
+    resolve: Function
+    set: Function
+    update: Function
+    remove: Function
+    get: Function
+    contains: Function
+    pushToArray: Function
   }
 
   export default EvolvSdk;

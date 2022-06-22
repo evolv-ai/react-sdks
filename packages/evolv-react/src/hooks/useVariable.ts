@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react"
-// import { EvolvContextInterface } from "@types";
-import { EvolvContext } from "../components/EvolvContext"
+import React, { useState, useEffect } from "react";
+import { useEvolvClient } from "../components/EvolvContext";
 
 export function useVariable<T = any>(key: string, initialState: T): T {
-  const { client }: any = useContext(EvolvContext);
+  const { client }: any = useEvolvClient();
+
   const [value, setValue] = useState(client.evolvState[key] || initialState);
   const initalSt = client.evolvState[key] || initialState; 
 

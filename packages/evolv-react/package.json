@@ -1,11 +1,11 @@
 {
   "name": "@evolv/react",
   "version": "0.0.0",
-  "type": "module",
   "main": "./dist/index.js",
-  "types": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "build": "tsup src/index.ts --format cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs,iife --dts --watch"
   },
@@ -16,18 +16,29 @@
   },
   "dependencies": {
     "@evolv/javascript-sdk": "^1.19.4",
-    "react-is": "^18.0.0",
+    "react-is": "17.0.2",
     "tsup": "^5.12.5"
   },
   "devDependencies": {
-    "@evolv/client": "workspace:*",
-    "@types/react-is": "^17.0.3",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.0.1",
+    "@types/jest": "^27.0.3",
+    "@types/react-is": "17.0.2",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-test-renderer": "^18.0.0",
     "config": "workspace:*",
-    "react": "^17.0.2",
+    "jest": "^27.4.4",
+    "jest-environment-jsdom-global": "^3.0.0",
+    "jest-junit": "^13.0.0",
+    "react-dom": "^18.0.0",
+    "react-test-renderer": "^18.0.0",
+    "ts-jest": "^27.1.1",
+    "react": "^18.0.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.3"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "^16.6.3 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.4 || ^17.0.0 || ^18.0.0"
   }
 }

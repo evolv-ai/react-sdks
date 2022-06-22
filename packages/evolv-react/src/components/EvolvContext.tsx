@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import EvolvClient from "@evolv/javascript-sdk";
 
 import { EvolvContextInterface } from '@types';
@@ -18,4 +18,8 @@ export const EvolvProvider = ({ children, client }: React.PropsWithChildren<Evol
       {children}
     </EvolvContext.Provider>
   )
+}
+export const useEvolvClient = () => {
+  const client = useContext(EvolvContext);
+  return client;
 }

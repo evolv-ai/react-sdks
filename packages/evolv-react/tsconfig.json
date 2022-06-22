@@ -1,6 +1,6 @@
 {
   "extends": "tsconfig/react-library.json",
-  "include": ["."],
+  "include": [".", "src"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "target": "es5",
@@ -8,6 +8,11 @@
     "paths": {
       "@types": ["./types/index.ts"]
     },
+    "module": "commonjs",
+    "sourceRoot": "../",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "typeRoots": [
       "./types",
       "./node_modules/@types"
