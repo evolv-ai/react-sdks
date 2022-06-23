@@ -1,5 +1,8 @@
 import EvolvSdk from "@evolv/javascript-sdk";
 import { EvolvClientOptions } from '@types';
+import { getCookie, setCookies } from 'cookies-next';
+
+const UID_COOKIE_KEY = 'evolv:uid';
 
 export class EvolvClient {
   public client: EvolvSdk;
@@ -7,9 +10,10 @@ export class EvolvClient {
 
   public options: EvolvClientOptions;
   public environmentId: string;
-  public userId: string;
+  public userId?: string;
   public isServer?: Boolean;
   public evolvState: any = {};
+  public serverContext: any = null;
   public subscribers: { [key: string]: Function[] };
 
   constructor(options: EvolvClientOptions) {
@@ -18,13 +22,14 @@ export class EvolvClient {
     this.environmentId = options.environmentId;
     this.userId = options.userId;
     this.evolvState = options.initialState || {};
+    this.serverContext = options.serverContext || {};
     this.subscribers = {};
 
     if (!options.environmentId || `${options.environmentId}` === 'false' || `${options.environmentId}` === 'null') {
       throw new Error(`EvolvClient: Must pass 'environmentId'`);
     }
 
-    if (!options.userId || `${options.userId}` === 'false' || `${options.userId}` === 'null') {
+    if ((!options.userId || `${options.userId}` === 'false' || `${options.userId}` === 'null') && !options.generateUid && !this.isServer) {
         throw new Error(`EvolvClient: Must pass 'userId'`);
     }
 
@@ -35,7 +40,20 @@ export class EvolvClient {
         clientName: 'react-sdk'
     });
 
-    this.client.initialize(this.userId, this.userId);
+    if (options.generateUid) {
+      if (this.isServer) {
+        this.userId = this.serverContext?.ctx?.req?.cookies[UID_COOKIE_KEY] || undefined;
+      } else {
+        this.userId = getCookie(UID_COOKIE_KEY) as string;
+      }
+
+      if (!this.userId) {
+        this.userId = generateId();
+        setCookies(UID_COOKIE_KEY, this.userId, { maxAge: 60 * 6 * 24 });
+      }
+    }
+
+    this.client.initialize(this.userId as string, this.userId as string);
   }
 
   public getKeys = async () => {
@@ -73,4 +91,11 @@ export class EvolvClient {
   public emit = (event: string): void => {
     this.client.emit(event);
   }
+}
+
+export function generateId() {
+  const prefix = Math.round(Math.random() * 100000000);
+  const date = Date.now();
+
+  return `${prefix}_${date}`;
 }

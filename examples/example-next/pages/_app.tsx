@@ -2,12 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-import { withEvolvSSR, withEvolv, EvolvClientOptions } from '@evolv/react';
-
-const evolvConfig: EvolvClientOptions = {
-  environmentId: process.env.NEXT_PUBLIC_EVOLV_ENVIROMENT || '',
-  userId: '289371892738921738912'
-};
+import { withEvolvSSR, withEvolv } from '@evolv/react';
 
 function MyApp(props: any) {
   const { Component, pageProps, props: appProps } = props;
@@ -32,7 +27,8 @@ MyApp.propTypes = {
   client: PropTypes.any
 };
 
-export default withEvolvSSR({
+// use `withEvolvSSR` HOC for server side rendering
+export default withEvolv({
   environmentId: process.env.NEXT_PUBLIC_EVOLV_ENVIROMENT || '',
-  userId: '289371892738921738912'
+  generateUid: true
 })(MyApp);

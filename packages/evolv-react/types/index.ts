@@ -43,9 +43,11 @@ export interface EvolvSdkOptions {
 
 export interface EvolvClientOptions {
   environmentId: string;
-  userId: string;
+  userId?: string;
+  generateUid: boolean;
   isServer?: Boolean;
   initialState?: any;
+  serverContext?: any;
 }
 declare global {
   namespace React {

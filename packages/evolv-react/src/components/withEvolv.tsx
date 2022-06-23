@@ -10,7 +10,8 @@ export function withEvolvServer<T>(
         const clientInstance: any = await (async () => {
           const client = new EvolvClient({
             ...options,
-            isServer: true
+            isServer: true,
+            serverContext: ctx
           });
           await client.getKeys();
           return client;
