@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-import { withEvolvSSR, withEvolv } from '@evolv/react';
+import { withEvolvSSR, withEvolv } from '@evolv-delivery-tools/react';
 
 function MyApp(props: any) {
   const { Component, pageProps, props: appProps } = props;

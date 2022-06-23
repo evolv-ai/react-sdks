@@ -39,8 +39,7 @@ importers:
 
   examples/example-next:
     specifiers:
-      '@evolv/javascript-sdk': ^1.19.4
-      '@evolv/react': workspace:*
+      '@evolv-delivery-tools/react': workspace:*
       '@types/node': ^17.0.12
       '@types/react': 17.0.37
       config: workspace:*
@@ -53,8 +52,7 @@ importers:
       typescript: ^4.5.3
       ui: workspace:*
     dependencies:
-      '@evolv/javascript-sdk': 1.19.4
-      '@evolv/react': link:../../packages/evolv-react
+      '@evolv-delivery-tools/react': link:../../packages/evolv-react
       next: 12.0.8_react-dom@17.0.2+react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2

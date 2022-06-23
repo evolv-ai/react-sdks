@@ -1,4 +1,4 @@
-import { useVariable, useEvolvClient } from "@evolv/react";
+import { useVariable, useEvolvClient } from "@evolv-delivery-tools/react";
 import { Button } from "ui";
 
 export default function Web() {

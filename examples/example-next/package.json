@@ -13,10 +13,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "ui": "workspace:*",
-    "@evolv/javascript-sdk": "^1.19.4",
-    "@evolv/react": "workspace:*"
+    "@evolv-delivery-tools/react": "workspace:*"
   },
-  "postinstall": "node ./postinstall.js",
   "devDependencies": {
     "config": "workspace:*",
     "eslint": "7.32.0",
