@@ -9,7 +9,6 @@
       "@types": ["./types/index.ts"]
     },
     "module": "commonjs",
-    "sourceRoot": "../",
     "jsx": "react",
     "esModuleInterop": true,
     "resolveJsonModule": true,
