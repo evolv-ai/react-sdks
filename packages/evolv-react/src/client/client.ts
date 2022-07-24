@@ -10,7 +10,11 @@ export class EvolvClient {
   public userId: string;
   public isServer?: Boolean;
   public evolvState: any = {};
-  public subscribers: { [key: string]: Function[] };
+  public subscribers: {
+    [key: string]: {
+      [suscriberKey: string]: Function
+    }
+  };
 
   constructor(options: EvolvClientOptions) {
     this.options = options;
@@ -51,23 +55,32 @@ export class EvolvClient {
   public getVariableByKey = async (key: string) => await this.client.get(key);
 
   public subscribeToKey = (key:string, cb: Function) => {
+    const id = Math.random().toString(36).substring(7);
     if (this.subscribers[key]) {
-      this.subscribers[key].push(cb);
+      this.subscribers[key][id] = cb;
     } else {
-      this.subscribers[key] = [cb];
+      this.subscribers[key] = {[id]: cb};
+      this.listenToKey(key);
     }
     if (!this.isServer && this.evolvState[key]) {
       cb(this.evolvState[key]);
     }
-    this.listenToKeys();
+    return id;
   }
 
-  public listenToKeys = () => {
-    Object.keys(this.subscribers).forEach(key => {
-      this.client.get(key).listen((result: any) => {
-        this.subscribers[key].forEach(c => c(result));
-      });
-    });
+  public unsubscribeFromKey = (key: string, id: string) => {
+    if (this.subscribers[key]) {
+      delete this.subscribers[key][id];
+    }
+  }
+
+  public listenToKey = (key: string) => {
+    this.client.get(key).listen((value: any) => {
+      this.evolvState[key] = value;
+      if (this.subscribers[key]) {
+        Object.values(this.subscribers[key]).forEach(cb => cb(value));
+      }
+    })
   }
 
   public emit = (event: string): void => {

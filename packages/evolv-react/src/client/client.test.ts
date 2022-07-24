@@ -13,6 +13,7 @@ describe("EvolvClient", () => {
 
   it('should suscribe to key', () => {
     const key = 'variableKey';
+    const anotherKey = 'anotherKey';
     const client = new EvolvClient({
       environmentId: "1234",
       userId: "1234",
@@ -31,7 +32,33 @@ describe("EvolvClient", () => {
     client.subscribeToKey(key, cb2);
     expect(cb2).toHaveBeenCalledTimes(0);
     (client.client as any).callListeners(key);
-    // expect(cb2).toHaveBeenCalledTimes(1);
+    expect(cb2).toHaveBeenCalledTimes(1);
+    expect(cb1).toHaveBeenCalledTimes(2);
+
+    const cb3 = jest.fn();
+    client.subscribeToKey(anotherKey, cb3);
+    expect(cb3).toHaveBeenCalledTimes(0);
+    (client.client as any).callListeners(anotherKey);
+    expect(cb3).toHaveBeenCalledTimes(1);
+    expect(cb1).toHaveBeenCalledTimes(2);
+    expect(cb2).toHaveBeenCalledTimes(1);
+
+  })
+
+  it('should unsuscribe from key', () => {
+    const key = 'variableKey';
+    const client = new EvolvClient({
+      environmentId: "1234",
+      userId: "1234",
+    });
+
+    const cb1 = jest.fn();
+    const cb1id = client.subscribeToKey(key, cb1);
+    (client.client as any).callListeners(key);
+    expect(cb1).toHaveBeenCalledTimes(1);
+    client.unsubscribeFromKey(key, cb1id);
+    (client.client as any).callListeners(key);
+    expect(cb1).toHaveBeenCalledTimes(1);
 
   })
 
