@@ -8,12 +8,15 @@ export function useVariable<T = any>(key: string, initialState: T): T {
   const initalSt = client.evolvState[key] || initialState; 
 
   useEffect(() => {
-    client.subscribeToKey(key, (result: T) => {
+    const callbackId = client.subscribeToKey(key, (result: T) => {
       console.log(key, result);
       const newValue = result === undefined ? initalSt : result;
       setValue(newValue);
     });
-  }, [client, client.evolvState]);
+    return () => {
+      client.unsubscribeFromKey(key, callbackId);
+    }
+  }, []);
 
   return value;
 }

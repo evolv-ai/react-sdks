@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="4" failures="0" errors="0" time="0.316">
-  <testsuite name="EvolvClient" errors="0" failures="0" skipped="0" timestamp="2022-07-24T13:52:18" time="0.278" tests="4">
+<testsuites name="jest tests" tests="4" failures="0" errors="0" time="0.403">
+  <testsuite name="EvolvClient" errors="0" failures="0" skipped="0" timestamp="2022-07-24T13:56:29" time="0.309" tests="4">
     <testcase classname="EvolvClient should start the client" name="EvolvClient should start the client" time="0.002">
     </testcase>
-    <testcase classname="EvolvClient should suscribe to key" name="EvolvClient should suscribe to key" time="0.004">
+    <testcase classname="EvolvClient should suscribe to key" name="EvolvClient should suscribe to key" time="0.003">
     </testcase>
-    <testcase classname="EvolvClient should unsuscribe from key" name="EvolvClient should unsuscribe from key" time="0">
+    <testcase classname="EvolvClient should unsuscribe from key" name="EvolvClient should unsuscribe from key" time="0.001">
     </testcase>
     <testcase classname="EvolvClient should emit" name="EvolvClient should emit" time="0.001">
     </testcase>
