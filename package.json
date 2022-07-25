@@ -1,25 +1,45 @@
 {
-  "name": "turborepo-basic-shared",
-  "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "examples/*"
-  ],
+  "name": "@evolv-delivery-tools/react",
+  "version": "0.4.5",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "license": "MIT",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "test": "jest",
+    "build": "tsup src/index.ts --format esm,cjs,iife --target es5 --dts",
+    "dev": "tsup src/index.ts --format esm,cjs,iife --target es5 --dts --watch"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evolv-ai/delivery"
+  },
+  "dependencies": {
+    "@evolv/javascript-sdk": "git+https://git@github.com/evolv-ai/javascript-sdk.git#48669eae833c33ae01d402f8c97af26f513fe0f7",
+    "@types/react": "^18.0.15",
+    "react": "17.0.2",
+    "react-is": "17.0.2",
+    "tsup": "^5.12.5"
   },
   "devDependencies": {
-    "prettier": "^2.5.1",
-    "turbo": "latest"
+    "@swc/core": "^1.2.218",
+    "cookies-next": "^2.1.1",
+    "eslint-config-next": "^12.0.8",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "7.28.0",
+    "get-installed-path": "^4.0.8",
+    "jest": "^27.4.4",
+    "jest-environment-jsdom-global": "^3.0.0",
+    "jest-junit": "^13.0.0",
+    "patch-package": "^6.4.7",
+    "react-dom": "17.0.2",
+    "ts-jest": "^27.1.1",
+    "typescript": "^4.5.3"
   },
-  "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=14.0.0"
-  },
-  "packageManager": "pnpm@6.32.2"
+  "peerDependencies": {
+    "react-dom": "^16.8.4 || ^17.0.0 || ^18.0.0"
+  }
 }
