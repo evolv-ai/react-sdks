@@ -1,8 +1,9 @@
 import EvolvSdk from "@evolv/javascript-sdk";
 import { EvolvClientOptions } from '@types';
-import { getCookie, setCookies } from 'cookies-next';
+import { getCookie, setCookie } from 'cookies-next';
 
 const UID_COOKIE_KEY = 'evolv:uid';
+const CID_COOKIE_KEY = 'evolv:cid';
 
 export class EvolvClient {
   public client: EvolvSdk;
@@ -49,11 +50,18 @@ export class EvolvClient {
 
       if (!this.userId) {
         this.userId = generateId();
-        setCookies(UID_COOKIE_KEY, this.userId, { maxAge: 60 * 6 * 24 });
+        setCookie(UID_COOKIE_KEY, this.userId, { maxAge: 60 * 6 * 24 });
       }
     }
-
     this.client.initialize(this.userId as string, this.userId as string);
+    this.setCidCookie();
+  }
+
+  public setCidCookie = () => {
+    this.client.on("confirmed", (type: string) => {
+        const cid = this.client?.context?.remoteContext?.confirmations?.[0]?.cid;
+        setCookie(CID_COOKIE_KEY, cid, { maxAge: 60 * 6 * 24 });
+    });
   }
 
   public getKeys = async () => {
