@@ -1,12 +1,12 @@
-import EvolvSdk from "@evolv/javascript-sdk";
-import { EvolvClientOptions } from '@types';
+const EvolvSdk = require("@evolv/javascript-sdk");
+import { EvolvClientOptions } from '../';
 import { getCookie, setCookie } from 'cookies-next';
 
 const UID_COOKIE_KEY = 'evolv:uid';
 const CID_COOKIE_KEY = 'evolv:cid';
 
 export class EvolvClient {
-  public client: EvolvSdk;
+  public client: typeof EvolvSdk;
   public context: any;
 
   public options: EvolvClientOptions;

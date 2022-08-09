@@ -1,13 +1,12 @@
 {
   "name": "@evolv-delivery-tools/react",
-  "version": "0.4.5",
+  "version": "0.4.9",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "type": "module",
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "tsup src/index.ts --format esm,cjs,iife --target es5 --dts",
+    "build": "tsc --project tsconfig.json",
     "dev": "tsup src/index.ts --format esm,cjs,iife --target es5 --dts --watch"
   },
   "files": [
@@ -18,9 +17,9 @@
     "url": "https://github.com/evolv-ai/delivery"
   },
   "dependencies": {
-    "@evolv/javascript-sdk": "git+https://git@github.com/evolv-ai/javascript-sdk.git#48669eae833c33ae01d402f8c97af26f513fe0f7",
+    "@evolv/javascript-sdk": "latest",
     "@types/react": "^18.0.15",
-    "react": "17.0.2",
+    "react": "18.0.0",
     "react-is": "17.0.2",
     "tsup": "^5.12.5"
   },
@@ -35,7 +34,7 @@
     "jest-environment-jsdom-global": "^3.0.0",
     "jest-junit": "^13.0.0",
     "patch-package": "^6.4.7",
-    "react-dom": "17.0.2",
+    "react-dom": "18.0.0",
     "ts-jest": "^27.1.1",
     "typescript": "^4.5.3"
   },

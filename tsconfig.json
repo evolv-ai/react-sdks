@@ -1,22 +1,51 @@
 {
-  "extends": "./tsconfig/react-library.json",
-  "include": [".", "src"],
-  "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es2015", "es2017", "dom"],
     "paths": {
       "@types": ["./types/index.ts"]
     },
-    "module": "commonjs",
-    "sourceRoot": "../",
-    "sourceMap": true,
-    "jsx": "react",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
     "typeRoots": [
       "./types",
       "./node_modules/@types"
     ],
-  }
+    /* Basic Options */
+    "target": "es5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
+    "module": "commonjs", /* Specify module code generation: 'none', commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+    "lib": [
+      "dom",
+      "esnext"
+    ], /* Specify library files to be included in the compilation:  */
+    "jsx": "react", /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+    "outDir": "dist", /* Redirect output structure to the directory. */
+    "rootDir": "src", /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    "declaration": true, /* Generates corresponding '.d.ts' file. */
+    "sourceMap": true, /* Generates corresponding '.map' file. */
+    /* Additional Checks */
+    "allowJs": true, /* Allow javascript files to be compiled - had to be added for react-scripts */
+    "esModuleInterop": true, /* default import and export can only be default-imported using */
+    "allowSyntheticDefaultImports": true, /* Allow default imports from modules with no default export. This affect just typechecking - had to be added for react-scripts */
+    "forceConsistentCasingInFileNames": false, /* Had to be added for react-scripts */
+    "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
+    "moduleResolution": "node", /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "resolveJsonModule": true,
+    "isolatedModules": true, /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
+    "noEmit": false, /* Be careful with enabling this as this will not let output be generated and files will not be copied - had to be added for react-scripts */
+    "downlevelIteration": true, /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
+    //"noFallthroughCasesInSwitch": true,
+    /* Strict Type-Checking Options */
+    "strict": false, /* Enable all strict type-checking options. */
+    "strictNullChecks": false, /* Enable strict null checks. */
+    /* Experimental Options */
+    "skipLibCheck": true,
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "**/__mocks__/**",
+    "**/*.test.tsx",
+    "**/*.spec.tsx",
+    "src/App.*",
+    "templates",
+    "lib"
+  ]
 }
