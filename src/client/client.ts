@@ -1,4 +1,4 @@
-import EvolvSdk from "@evolv/javascript-sdk";
+import EvolvSdk from "@evolv/client";
 import { EvolvClientOptions } from '@types';
 import { getCookie, setCookie } from 'cookies-next';
 
