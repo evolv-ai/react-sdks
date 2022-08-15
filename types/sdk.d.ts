@@ -1,4 +1,4 @@
-declare module '@evolv/javascript-sdk' {
+declare module '@evolv/client' {
   export interface EvolvSdkOptions {
     environment: string;
     endpoint?: string;
@@ -18,7 +18,7 @@ declare module '@evolv/javascript-sdk' {
     timeout?: number;
     hooks?: {};
   }
-  
+
   class EvolvSdk {
     constructor(options: EvolvSdkOptions): EvolvSdk;
     get: (key: string) => Promise<any> | any

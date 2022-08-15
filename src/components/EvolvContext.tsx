@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import EvolvClient from "@evolv/javascript-sdk";
+import EvolvClient from '@evolv/client';
 
 import { EvolvContextInterface } from '@types';
 
