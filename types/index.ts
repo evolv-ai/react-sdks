@@ -1,4 +1,4 @@
-import type EvolvClient from "@evolv/javascript-sdk"
+import type EvolvClient from '@evolv/client';
 
 export interface EvolvContextInterface {
   client?: EvolvClient

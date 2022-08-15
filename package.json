@@ -1,6 +1,6 @@
 {
   "name": "@evolv-delivery-tools/react",
-  "version": "0.4.5",
+  "version": "0.5.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
@@ -15,10 +15,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/evolv-ai/delivery"
+    "url": "https://github.com/evolv-ai/delivery-clients"
   },
   "dependencies": {
-    "@evolv/javascript-sdk": "git+https://git@github.com/evolv-ai/javascript-sdk.git#48669eae833c33ae01d402f8c97af26f513fe0f7",
+    "@evolv/client": "^1.23.1",
     "@types/react": "^18.0.15",
     "react": "17.0.2",
     "react-is": "17.0.2",
