@@ -3,15 +3,13 @@
   "version": "1.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "scripts": {
-    "start": "npm-run-all --parallel start:*",
-    "start:browser-sync": "node support/dev/bs-config.js",
-    "test": "jest",
     "clean": "del dist **/*.tsbuildinfo",
-    "build": "tsup src/index.ts --format esm,cjs,iife --target es5 --dts",
-    "dev": "tsup src/index.ts --format esm,cjs,iife --target es5 --dts --watch",
-    "watch": "tsc --build --watch"
+    "prebuild": "npm run clean",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch",
+    "test": "jest"
   },
   "files": [
     "dist"
