@@ -1,0 +1,38 @@
+{
+  "name": "@evolv/react",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm-run-all --parallel start:*",
+    "start:browser-sync": "node support/dev/bs-config.js",
+    "test": "jest",
+    "clean": "del dist **/*.tsbuildinfo",
+    "build": "tsup src/index.ts --format esm,cjs,iife --target es5 --dts",
+    "dev": "tsup src/index.ts --format esm,cjs,iife --target es5 --dts --watch",
+    "watch": "tsc --build --watch"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evolv-ai/delivery-clients"
+  },
+  "dependencies": {
+    "@evolv/client": "^2.1.6-alpha-6b05abe",
+    "@evolv/hashing": "^1.1.0",
+    "base64-arraybuffer": "^1.0.2",
+    "deepmerge": "^4.2.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": "^16.8.4 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "typescript": "^4.8.2"
+  }
+}

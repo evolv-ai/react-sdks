@@ -1,7 +1,8 @@
+import { EvolvClient } from '@evolv/client';
 import React, { useContext } from 'react'
-import EvolvClient from '@evolv/client';
 
-import { EvolvContextInterface } from '@types';
+import { EvolvContextInterface } from '../types';
+
 
 const defaultStore: EvolvContextInterface = {
 }
