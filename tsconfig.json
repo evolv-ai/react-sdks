@@ -18,8 +18,6 @@
   ],
   "references": [
     { "path": "./packages/nextjs" },
-    { "path": "./packages/nextjs-demo" },
-    { "path": "./packages/react" },
-    { "path": "./packages/react-demo" }
+    { "path": "./packages/react" }
   ]
 }

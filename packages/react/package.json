@@ -19,7 +19,7 @@
     "url": "https://github.com/evolv-ai/delivery-clients"
   },
   "dependencies": {
-    "@evolv/client": "^2.1.6-alpha-6b05abe",
+    "@evolv/client": "^2.1.7-alpha-f40aada",
     "@evolv/hashing": "^1.1.0",
     "base64-arraybuffer": "^1.0.2",
     "deepmerge": "^4.2.2"

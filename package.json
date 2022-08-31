@@ -12,10 +12,10 @@
     "test": "lerna run test"
   },
   "workspaces": [
+    "examples/nextjs",
+    "examples/react",
     "packages/nextjs",
-    "packages/nextjs-demo",
-    "packages/react",
-    "packages/react-demo"
+    "packages/react"
   ],
   "repository": {
     "type": "git",
