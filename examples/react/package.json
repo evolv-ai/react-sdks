@@ -1,0 +1,30 @@
+{
+  "name": "@evolv/react-demo",
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "clean": "del dist **/*.tsbuildinfo",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@evolv/react": "*",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.48",
+    "@types/react-dom": "^17.0.11",
+    "typescript": "^4.8.2"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
