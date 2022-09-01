@@ -5,6 +5,10 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "license": "Apache-2.0",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js"
+  },
   "scripts": {
     "clean": "del dist **/*.tsbuildinfo",
     "prebuild": "npm run clean",
@@ -23,7 +27,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@evolv/client": "^2.1.7-alpha-f40aada",
+    "@evolv/client": "^2.1.8-alpha-67f8a92",
     "@evolv/hashing": "^1.1.0",
     "base64-arraybuffer": "^1.0.2",
     "deepmerge": "^4.2.2"
