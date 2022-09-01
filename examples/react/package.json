@@ -2,6 +2,7 @@
   "name": "@evolv/react-demo",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "react-scripts start",
     "clean": "del dist **/*.tsbuildinfo",

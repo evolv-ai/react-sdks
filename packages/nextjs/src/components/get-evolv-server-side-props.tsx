@@ -2,7 +2,7 @@ import { EvolvClientOptions } from '@evolv/react';
 import { GetServerSidePropsContext } from 'next';
 import { GetServerSidePropsResult } from 'next/types';
 
-import { ClientAdapter } from '../client.adapter';
+import { ClientAdapter } from '../client.adapter.js';
 
 
 export interface EvolvOptions {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useEvolv } from '../components';
+import { useEvolv } from '../components/index.js';
 
 export function useVariable<T = any>(key: string, initialState: T): T {
 	const client = useEvolv();

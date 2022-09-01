@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useEvolv } from '../components';
+import { useEvolv } from '../components/index.js';
 
 export function useConfig<T = any>(key: string, initialState: T): { value: T, error: Error | null } {
 	const client = useEvolv();

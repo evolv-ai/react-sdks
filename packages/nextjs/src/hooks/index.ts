@@ -1,1 +1,1 @@
-export * from './use-variable';
+export * from './use-variable.js';
