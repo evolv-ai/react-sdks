@@ -1,5 +1,5 @@
 import { Dispatch, useEffect, useState } from 'react';
-import { useEvolv } from '../components';
+import { useEvolv } from '../components/index.js';
 
 
 export function useContextState<T = any>(key: string): [T, Dispatch<T>] {

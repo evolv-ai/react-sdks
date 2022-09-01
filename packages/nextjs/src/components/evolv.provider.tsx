@@ -1,7 +1,7 @@
 import { EvolvClientOptions, EvolvProvider as EvolvClientProvider } from '@evolv/react';
 import React, { createContext, FC, useContext, useState } from 'react';
 
-import { ClientAdapter } from '../client.adapter';
+import { ClientAdapter } from '../client.adapter.js';
 
 
 const EvolvContext = createContext<ClientAdapter | null>(null);
