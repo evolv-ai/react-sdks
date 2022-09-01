@@ -4,6 +4,7 @@
   "license": "Apache-2.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "clean": "del dist **/*.tsbuildinfo",
     "prebuild": "npm run clean",
