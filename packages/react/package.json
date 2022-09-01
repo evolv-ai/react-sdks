@@ -18,6 +18,9 @@
     "type": "git",
     "url": "https://github.com/evolv-ai/delivery-clients"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@evolv/client": "^2.1.7-alpha-f40aada",
     "@evolv/hashing": "^1.1.0",

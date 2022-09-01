@@ -12,6 +12,13 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evolv-ai/delivery-clients"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@evolv/react": "*"
   },
