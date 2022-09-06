@@ -8,7 +8,8 @@
   "scripts": {
     "clean": "del dist **/*.tsbuildinfo",
     "prebuild": "npm run clean",
-    "build": "tsc --build tsconfig.json"
+    "build": "tsc --build tsconfig.json",
+    "watch": "tsc --build tsconfig.json --watch"
   },
   "files": [
     "dist"

@@ -14,8 +14,12 @@ export class ClientAdapter {
 		return this._evolvState;
 	}
 
+	get isBrowser() {
+		return typeof window !== 'undefined';
+	}
+
 	get isServer() {
-		return typeof window === 'undefined';
+		return !this.isBrowser;
 	}
 
 	public subscribers: Record<string, Function[]> = {};
@@ -27,7 +31,7 @@ export class ClientAdapter {
 		this._evolvState = hydratedState ?? {};
 
 		this._client = new EvolvClient({
-			autoConfirm: true,
+			autoConfirm: this.isBrowser,
 			analytics: true,
 			clientName: 'react-sdk',
 			...options
