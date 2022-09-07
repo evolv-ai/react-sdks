@@ -1,8 +1,8 @@
-import { EvolvClientOptions } from '@evolv/react';
+import { ClientAdapter, EvolvClientOptions } from '@evolv/react';
 import { GetServerSidePropsContext } from 'next';
 import { GetServerSidePropsResult } from 'next/types';
 
-import { ClientAdapter } from '../client.adapter.js';
+//import { ClientAdapter } from '../client.adapter.js';
 
 
 export interface EvolvOptions {
@@ -37,15 +37,15 @@ export function getEvolvServerSideProps(options: EvolvOptions): PropsFactory<Res
 export function getEvolvServerSideProps(options: EvolvOptions, ctx: GetServerSidePropsContext): Promise<Result>;
 export function getEvolvServerSideProps(options: EvolvOptions, ctx?: GetServerSidePropsContext): Promise<Result> | PropsFactory<Result> {
 	const factory = async (ctx: GetServerSidePropsContext) => {
-		const client = new ClientAdapter(options.client);
+		const adapter = new ClientAdapter(options.client);
 
-		client.initialize(options.uid);
+		adapter.initialize(options.uid);
 
-		await client.getKeys();
+		await adapter.hydrate();
 
 		return {
 			props: {
-				hydratedState: client.evolvState
+				hydratedState: adapter.hydratedState
 			}
 		};
 	};

@@ -3,7 +3,7 @@ import { useEvolv } from '../components/index.js';
 
 
 export function useIsKeyActive(key: string): boolean {
-	const client = useEvolv();
+	const { client } = useEvolv();
 	const [value, setValue] = useState(false);
 
 	useEffect(() =>

@@ -1,8 +1,6 @@
-import { useVariable } from '@evolv/nextjs';
+import { useVariable } from '@evolv/react';
 
 export default function Heading() {
-	//const headingText = useVariable('movies.cta-text', 'control');
-
 	const headingText = useVariable('shop.checkout-steps', 'control');
 
 	return (

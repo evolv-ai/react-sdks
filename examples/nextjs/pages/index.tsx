@@ -22,8 +22,8 @@ const Home: FC<EvolvServerSideProps & UserIdProps> = (props) => {
 			{/* Use a component such as this to save the CID in a cookie */}
 			<StoreCidCookie />
 
-			<Heading/>
-			<Button/>
+			<Heading />
+			<Button />
 		</EvolvProvider>
 	);
 };

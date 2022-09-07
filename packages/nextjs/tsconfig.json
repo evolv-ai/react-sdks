@@ -4,8 +4,7 @@
     "composite": true,
     "rootDir": "./src",
     "sourceRoot": "./src",
-    "outDir": "./dist",
-    "declarationMap": true
+    "outDir": "./dist"
   },
   "include": [
     "src/**/*"
