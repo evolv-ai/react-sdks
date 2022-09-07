@@ -12,6 +12,10 @@
       "dom",
       "es2015"
     ],
+    "types": [
+      "./env.d.ts",
+      "node"
+    ],
     "jsx": "react-jsx"
   },
   "include": [

@@ -10,8 +10,8 @@ interface BaseProps {
 	options: EvolvClientOptions;
 	uid: string;
 	hydratedState?: Record<string, any>;
-	remoteContext?: RemoteContext;
-	localContext?: LocalContext;
+	remoteContext?: Partial<RemoteContext>;
+	localContext?: Partial<LocalContext>;
 }
 
 export const EvolvProvider: FC<BaseProps> =
