@@ -1,22 +1,19 @@
 import { useState, useEffect } from 'react';
+
 import { useEvolv } from '../components/index.js';
 
 
-export function useVariable<T = any>(key: string, initialState: T): { value: T, error: Error | null } {
-  const client = useEvolv();
-  const [value, setValue] = useState(initialState);
-  const [error, setError] = useState<Error | null>(null);
+export function useVariable<T = any>(key: string, initialState: T): T {
+  const { client, hydratedState } = useEvolv();
+  const initialValue = hydratedState[key] ?? initialState;
+
+  const [value, setValue] = useState(initialValue);
 
   useEffect(() =>
-	  client.get(key).listen((valueOrError) => {
-		  if (valueOrError instanceof Error) {
-			  setError(valueOrError);
-			  return;
-		  }
-
-		  setValue(valueOrError ?? initialState);
+	  client.get(key).listen((val) => {
+		  setValue(val ?? initialValue);
 	  })
   , [key]);
 
-  return { value, error };
+  return value;
 }

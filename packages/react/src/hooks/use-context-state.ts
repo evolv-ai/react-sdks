@@ -3,7 +3,7 @@ import { useEvolv } from '../components/index.js';
 
 
 export function useContextState<T = any>(key: string): [T, Dispatch<T>] {
-	const client = useEvolv();
+	const { client } = useEvolv();
 	const [value, setValue] = useState(() => {
 		return client.context.get(key);
 	});
@@ -12,7 +12,6 @@ export function useContextState<T = any>(key: string): [T, Dispatch<T>] {
 		client.on('context.changed', () => {
 			setValue(client.context.get(key));
 		});
-
 	}, [key]);
 
 	const setter = (value: T) => {

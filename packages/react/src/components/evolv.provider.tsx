@@ -1,67 +1,61 @@
-import EvolvClient, { EvolvClientOptions, RemoteContext, LocalContext } from '@evolv/client';
+import { EvolvClientOptions, RemoteContext, LocalContext } from '@evolv/client';
 import React, { createContext, FC, useContext, useState } from 'react';
 
+import { ClientAdapter } from '../client.adapter.js';
 
-const EvolvContext = createContext<EvolvClient | null>(null);
+
+const EvolvContext = createContext<ClientAdapter | null>(null);
 
 interface BaseProps {
 	options: EvolvClientOptions;
 	uid: string;
+	hydratedState?: Record<string, any>;
 	remoteContext?: RemoteContext;
 	localContext?: LocalContext;
 }
 
-type Props =
-	| BaseProps
-	| { client: EvolvClient };
+export const EvolvProvider: FC<BaseProps> =
+    ({ children, options, uid, hydratedState, remoteContext, localContext }) => {
+	    const [adapter] = useState(() => {
+			const instance = new ClientAdapter(options, hydratedState);
 
-export const EvolvProvider: FC<Props> =
-    (props) => {
-		const [client] = useState(() => {
-			if ('client' in props) {
-				return props.client;
-			}
-
-			const { options, uid, remoteContext, localContext } = props;
-			const instance: EvolvClient = new EvolvClient(options);
-
-			instance.initialize(uid, remoteContext, localContext);
-
-			if (typeof window !== 'undefined') {
-				window.evolv ??= {} as any;
-				window.evolv.client = instance;
-				window.evolv.context = instance.context;
-			}
+		    instance.initialize(uid, remoteContext, localContext);
 
 			return instance;
 		});
 
+		if (adapter.isBrowser) {
+			globalThis.evolv ??= {};
+			globalThis.evolv.client = adapter.client;
+			globalThis.evolv.context = adapter.client.context;
+		}
+
         return (
-            <EvolvContext.Provider value={client}>
-                {props.children}
+            <EvolvContext.Provider value={adapter}>
+                {children}
             </EvolvContext.Provider>
         );
     };
 
-export const EvolvConsumer: FC<{ children: (client: EvolvClient) => JSX.Element }> =
+export const EvolvConsumer: FC<{ children: (client: ClientAdapter) => JSX.Element }> =
     ({ children }) => (
         <EvolvContext.Consumer>
-            {client => {
-                if (!client) {
+            {adapter => {
+                if (!adapter) {
                     throw new Error('EvolvConsumer must be used within an EvolvProvider');
                 }
 
-                return children(client);
+                return children(adapter);
             }}
         </EvolvContext.Consumer>
     );
 
-export function useEvolv(): EvolvClient {
-    const client = useContext(EvolvContext);
+export function useEvolv(): ClientAdapter {
+    const adapter = useContext(EvolvContext);
 
-    if (!client) {
+    if (!adapter) {
         throw new Error('useEvolv() must be used within an EvolvProvider');
     }
 
-    return client;
+    return adapter;
 }

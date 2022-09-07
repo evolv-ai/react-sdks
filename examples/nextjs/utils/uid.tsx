@@ -33,10 +33,10 @@ export async function getUserIdProps({ req, res }: GetServerSidePropsContext): P
 }
 
 export function useCidCookie() {
-	const { client, isServer } = useEvolv();
+	const { client, isBrowser } = useEvolv();
 
 	useEffect(() => {
-		if (!isServer) {
+		if (isBrowser) {
 			client.on('confirmed', () => {
 				const cid = client.context.remoteContext.confirmations?.[0]?.cid;
 				setCookie(CID_COOKIE_KEY, cid, { maxAge: 60 * 6 * 24 });
