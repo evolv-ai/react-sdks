@@ -7,10 +7,7 @@ import Button from './button';
 import Heading from './heading';
 
 
-const options: EvolvClientOptions = {
-	environment: 'df7109b048',
-	endpoint: 'https://participants-newdev.evolvdev.com/'
-};
+const options: EvolvClientOptions = JSON.parse(process.env.NEXT_PUBLIC_EVOLV_CONFIG ?? '{}');
 
 const Home: FC<EvolvServerSideProps & UserIdProps> = (props) => {
 	return (
