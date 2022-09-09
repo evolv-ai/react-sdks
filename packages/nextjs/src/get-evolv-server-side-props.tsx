@@ -23,15 +23,27 @@ interface Result {
 }
 
 /**
+ * Server-side loader function that builds out the necessary data needed to hydrate page during rendering. The
+ * return value of this function will become the value of `props` that is passed to the page component.
+ *
+ * @description
+ * If a page does not need to export its own `getServerSideProps()` function, use the shorter form shown in the first example.
+ * If a page does need to export its own `getServerSideProps()` function, use the longer form inside the page's
+ * `getServerSideProps()` function to merge together page props and Evolv props.
  *
  * @example
  * export const getServerSideProps = getEvolvServerSideProps(options);
  *
  * @example
  * export function getServerSideProps(ctx) {
+ *     const pageProps = {};
  *     const { props: evolvProps } = await getEvolvServerSideProps(options, ctx);
+ *
  *     return {
- *         props: evolvProps
+ *         props: {
+ *             ...pageProps
+ *             ...evolvProps
+ *         }
  *     };
  * }
  */

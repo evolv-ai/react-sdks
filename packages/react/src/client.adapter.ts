@@ -40,10 +40,8 @@ export class ClientAdapter {
 	async hydrate(): Promise<void> {
 		const keys = await this.client.getActiveKeys();
 
-		if (keys.current) {
-			for (const key of keys.current) {
-				this.hydratedState[key] = await this.client.get(key);
-			}
+		for (const key of keys.current ?? []) {
+			this.hydratedState[key] = await this.client.get(key);
 		}
 	}
 
