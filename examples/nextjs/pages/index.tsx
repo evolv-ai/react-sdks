@@ -1,4 +1,4 @@
-import { EvolvClientOptions, EvolvProvider, EvolvServerSideProps, getEvolvServerSideProps } from '@evolv/nextjs';
+import { EvolvClientOptions, EvolvProvider, EvolvServerSideProps, getEvolvServerSideProps, RemoteContext } from '@evolv/nextjs';
 import { GetServerSidePropsContext } from 'next';
 import { FC } from 'react';
 
@@ -15,6 +15,7 @@ const Home: FC<EvolvServerSideProps & UserIdProps> = (props) => {
 			options={options}
 			uid={props.uid}
 			hydratedState={props.hydratedState}
+			remoteContext={props.remoteContext}
 		>
 			{/* Use a component such as this to save the CID in a cookie */}
 			<StoreCidCookie />
@@ -26,8 +27,23 @@ const Home: FC<EvolvServerSideProps & UserIdProps> = (props) => {
 };
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+	const remoteContext: Partial<RemoteContext> = {
+		browser: 'chrome',
+		device: 'desktop',
+		geo: {
+			city: 'San Francisco',
+			country: 'US',
+			lat: '37.789640',
+			lon: '-122.401450',
+			metro: '807',
+			postal: '94104',
+			region: 'CA',
+			tz: 'America/Los_Angeles'
+		}
+	};
+
 	const { props: { uid } } = await getUserIdProps(ctx);
-	const { props: evolvProps } = await getEvolvServerSideProps({ client: options, uid }, ctx);
+	const { props: evolvProps } = await getEvolvServerSideProps({ client: options, uid, remoteContext }, ctx);
 
 	return {
 		props: {
