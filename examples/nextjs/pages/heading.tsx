@@ -1,4 +1,4 @@
-import { useVariable } from '@evolv/react';
+import { useVariable } from '@evolv/nextjs';
 
 export default function Heading() {
 	const headingText = useVariable('shop.checkout-steps', 'control');

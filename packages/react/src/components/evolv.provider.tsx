@@ -15,11 +15,11 @@ interface Props {
 }
 
 export const EvolvProvider: FC<Props> =
-    ({ children, options, uid, hydratedState, remoteContext, localContext }) => {
-	    const [adapter] = useState(() => {
+	({ children, options, uid, hydratedState, remoteContext, localContext }) => {
+		const [adapter] = useState(() => {
 			const instance = new ClientAdapter(options, hydratedState);
 
-		    instance.initialize(uid, remoteContext, localContext);
+			instance.initialize(uid, remoteContext, localContext);
 
 			return instance;
 		});
@@ -30,32 +30,32 @@ export const EvolvProvider: FC<Props> =
 			globalThis.evolv.context = adapter.client.context;
 		}
 
-        return (
-            <EvolvContext.Provider value={adapter}>
-                {children}
-            </EvolvContext.Provider>
-        );
-    };
+		return (
+			<EvolvContext.Provider value={adapter}>
+				{children}
+			</EvolvContext.Provider>
+		);
+	};
 
 export const EvolvConsumer: FC<{ children: (client: ClientAdapter) => JSX.Element }> =
-    ({ children }) => (
-        <EvolvContext.Consumer>
-            {adapter => {
-                if (!adapter) {
-                    throw new Error('EvolvConsumer must be used within an EvolvProvider');
-                }
+	({ children }) => (
+		<EvolvContext.Consumer>
+			{adapter => {
+				if (!adapter) {
+					throw new Error('EvolvConsumer must be used within an EvolvProvider');
+				}
 
-                return children(adapter);
-            }}
-        </EvolvContext.Consumer>
-    );
+				return children(adapter);
+			}}
+		</EvolvContext.Consumer>
+	);
 
 export function useEvolv(): ClientAdapter {
-    const adapter = useContext(EvolvContext);
+	const adapter = useContext(EvolvContext);
 
-    if (!adapter) {
-        throw new Error('useEvolv() must be used within an EvolvProvider');
-    }
+	if (!adapter) {
+		throw new Error('useEvolv() must be used within an EvolvProvider');
+	}
 
-    return adapter;
+	return adapter;
 }
