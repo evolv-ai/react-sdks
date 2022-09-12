@@ -1,7 +1,7 @@
 import { Dispatch, useEffect, useState } from 'react';
 import { useEvolv } from '../components/index.js';
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useContextState<T = any>(key: string): [T, Dispatch<T>] {
 	const { client } = useEvolv();
 	const [value, setValue] = useState(() => {

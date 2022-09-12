@@ -9,7 +9,8 @@
     "clean": "del dist **/*.tsbuildinfo",
     "prebuild": "npm run clean",
     "build": "tsc --build tsconfig.json",
-    "watch": "tsc --build tsconfig.json --watch"
+    "watch": "tsc --build tsconfig.json --watch",
+    "lint": "eslint src --ext=.ts,.tsx"
   },
   "files": [
     "dist"

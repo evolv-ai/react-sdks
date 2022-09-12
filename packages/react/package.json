@@ -14,7 +14,8 @@
     "prebuild": "npm run clean",
     "build": "tsc --build",
     "watch": "tsc --build --watch",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint src --ext=.ts,.tsx"
   },
   "files": [
     "dist"
