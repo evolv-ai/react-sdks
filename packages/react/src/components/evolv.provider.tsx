@@ -6,7 +6,7 @@ import { ClientAdapter } from '../client.adapter.js';
 
 const EvolvContext = createContext<ClientAdapter | null>(null);
 
-interface Props {
+export interface EvolvProviderProps {
 	options: EvolvClientOptions;
 	uid: string;
 	hydratedState?: Record<string, any>;
@@ -14,7 +14,7 @@ interface Props {
 	localContext?: Partial<LocalContext>;
 }
 
-export const EvolvProvider: FC<Props> =
+export const EvolvProvider: FC<EvolvProviderProps> =
 	({ children, options, uid, hydratedState, remoteContext, localContext }) => {
 		const [adapter] = useState(() => {
 			const instance = new ClientAdapter(options, hydratedState);
