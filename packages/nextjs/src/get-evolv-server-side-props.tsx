@@ -2,6 +2,8 @@ import { ClientAdapter, EvolvClientOptions, LocalContext, RemoteContext } from '
 import { GetServerSidePropsContext } from 'next';
 import { GetServerSidePropsResult } from 'next/types';
 
+import { getClientName } from './utils/index.js';
+
 
 export interface EvolvOptions {
 	uid: string;
@@ -51,11 +53,16 @@ export function getEvolvServerSideProps(options: EvolvOptions): PropsFactory<Res
 export function getEvolvServerSideProps(options: EvolvOptions, ctx: GetServerSidePropsContext): Promise<Result>;
 export function getEvolvServerSideProps(options: EvolvOptions, ctx?: GetServerSidePropsContext): Promise<Result> | PropsFactory<Result> {
 	const factory = async (ctx: GetServerSidePropsContext) => {
-		const adapter = new ClientAdapter(options.client);
+		const adapter = new ClientAdapter({
+			...options.client,
+			clientName: getClientName()
+		});
 
 		adapter.initialize(options.uid, options.remoteContext, options.localContext);
 
 		await adapter.hydrate();
+
+		console.debug(adapter.client.context.remoteContext);
 
 		return {
 			props: {

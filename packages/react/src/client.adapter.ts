@@ -28,7 +28,7 @@ export class ClientAdapter {
 			autoConfirm: this.isBrowser,
 			analytics: true,
 			clientName: 'react-sdk',
-			omitClientContext: this.isBrowser,
+			clientType: this.isBrowser ? 'direct' : 'proxied',
 			...options
 		});
 	}
