@@ -62,8 +62,6 @@ export function getEvolvServerSideProps(options: EvolvOptions, ctx?: GetServerSi
 
 		await adapter.hydrate();
 
-		console.debug(adapter.client.context.remoteContext);
-
 		return {
 			props: {
 				hydratedState: adapter.hydratedState,
