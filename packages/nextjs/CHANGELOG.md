@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.0.0 (2022-09-14)
+
+
+### Bug Fixes
+
+* **AP-1778:** confirm only on browsers ([9e8b523](https://github.com/evolv-ai/react-sdks/commit/9e8b523f7e05ebbdfff7f249c0c97ebe712a78ac))
+* **AP-1778:** fixes from code review ([1c6b9b8](https://github.com/evolv-ai/react-sdks/commit/1c6b9b88f3b67f02531b250541e90cbbe7aa24c0))
+
+
+### Features
+
+* **AP-1778:** implement nextjs sdk ([b05d5e5](https://github.com/evolv-ai/react-sdks/commit/b05d5e5bd715f3cadfa2d19e335e361122cd79d2))
+* **AP-1871:** exclude "localContext" from server-side props result ([#15](https://github.com/evolv-ai/react-sdks/issues/15)) ([3919c54](https://github.com/evolv-ai/react-sdks/commit/3919c54c6bb5771eab34fcf45750016d7242ef71))
+* **AP-1898:** add support for client type option ([5ddd0fe](https://github.com/evolv-ai/react-sdks/commit/5ddd0fe60998ed313144489584d3ab21c153b79b))
+* **AP-1898:** add support for omitClientContext option ([eaf8248](https://github.com/evolv-ai/react-sdks/commit/eaf8248993e7f13d1ff35f4b11a1e970c8ba51fc))
+
+
+
+
+
 # [1.0.0-alpha.6](https://github.com/evolv-ai/react-sdks/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2022-09-12)
 
 
