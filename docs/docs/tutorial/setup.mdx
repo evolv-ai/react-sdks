@@ -1,0 +1,71 @@
+---
+sidebar_position: 1
+---
+
+# Setup
+
+## Set options
+
+```tsx title="src/pages/index.tsx" showLineNumbers
+import { EvolvClientOptions } from '@evolv/nextjs';
+
+const options: EvolvClientOptions = {
+	environment: 'environmentId'
+};
+```
+
+[See list of options](../api/interfaces/evolv_react.EvolvClientOptions)
+
+## Add `<EvolvProvider />` to your page
+
+```tsx title="src/pages/index.tsx" showLineNumbers
+import { EvolvProvider, EvolvServerSideProps } from '@evolv/nextjs';
+import React, { FC } from 'react';
+
+interface Props {}
+
+const Page: FC<Props & EvolvServerSideProps> = (props) => {
+	return (
+		// highlight-start
+		<EvolvProvider
+			options={options}
+			uid={props.uid}
+			hydratedState={props.hydratedState}
+			remoteContext={props.remoteContext}
+		>
+		// highlight-end
+			<h1>My NextJS page</h1>
+			<p>This is a NextJS page</p>
+		// highlight-start
+		</EvolvProvider>
+		// highlight-end
+	);
+}
+
+export default Page;
+```
+
+## Configure `getServerSideProps()`
+
+[NextJS Documentation](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
+
+```tsx title="src/pages/index.tsx" showLineNumbers
+import { GetServerSidePropsContext } from 'next';
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+	// highlight-start
+	const { props: evolvProps } = await getEvolvServerSideProps({
+		client: options,
+		uid,
+		remoteContext,
+		localContext
+	}, ctx);
+	// highlight-end
+
+	return {
+		props: {
+			...evolvProps
+		}
+	};
+}
+```
