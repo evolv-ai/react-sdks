@@ -9,7 +9,7 @@ const EvolvContext = createContext<ClientAdapter | null>(null);
 export interface EvolvProviderProps {
 	options: EvolvClientOptions;
 	uid: string;
-	hydratedState?: Record<string, any>;
+	hydratedState?: Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 	remoteContext?: Partial<RemoteContext>;
 	localContext?: Partial<LocalContext>;
 }

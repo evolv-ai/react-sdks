@@ -5,7 +5,8 @@
     "dev": "next dev --port 4000",
     "clean": "del dist **/*.tsbuildinfo .next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint . --ext=.ts,.tsx"
   },
   "dependencies": {
     "@evolv/nextjs": "*",

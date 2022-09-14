@@ -42,7 +42,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 		}
 	};
 
-	const { props: { uid } } = await getUserIdProps(ctx);
+	const { props: { uid }} = await getUserIdProps(ctx);
 	const { props: evolvProps } = await getEvolvServerSideProps({ client: options, uid, remoteContext }, ctx);
 
 	return {

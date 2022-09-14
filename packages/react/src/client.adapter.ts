@@ -8,6 +8,7 @@ export class ClientAdapter {
 		return this._client;
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private _hydratedState: Record<string, any> = {};
 
 	get hydratedState() {
@@ -20,7 +21,7 @@ export class ClientAdapter {
 
 	constructor(
 		private readonly options: EvolvClientOptions,
-		hydratedState?: Record<string, any>
+		hydratedState?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
 	) {
 		this._hydratedState = hydratedState ?? {};
 
@@ -33,6 +34,7 @@ export class ClientAdapter {
 		});
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	initialize(uid: string, remoteContext?: Record<string, any>, localContext?: Record<string, any>) {
 		this.client.initialize(uid, remoteContext, localContext);
 	}
