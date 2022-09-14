@@ -17,7 +17,6 @@ type PropsFactory<T extends GetServerSidePropsResult<any>> = (ctx: GetServerSide
 export interface EvolvServerSideProps {
 	hydratedState: Record<string, any>;
 	remoteContext?: Partial<RemoteContext>;
-	localContext?: Partial<LocalContext>;
 }
 
 interface Result {
@@ -65,8 +64,7 @@ export function getEvolvServerSideProps(options: EvolvOptions, ctx?: GetServerSi
 		return {
 			props: {
 				hydratedState: adapter.hydratedState,
-				remoteContext: options.remoteContext ?? {},
-				localContext: options.localContext ?? {}
+				remoteContext: options.remoteContext ?? {}
 			}
 		};
 	};
