@@ -1,8 +1,10 @@
-import { EvolvClientOptions, EvolvProvider, EvolvServerSideProps, getEvolvServerSideProps, RemoteContext } from '@evolv/nextjs';
+import {
+	EvolvClientOptions, EvolvProvider, EvolvServerSideProps, getEvolvServerSideProps, LocalContext, RemoteContext
+} from '@evolv/nextjs';
 import { GetServerSidePropsContext } from 'next';
 import { FC } from 'react';
 
-import { StoreCidCookie, getUserIdProps, UserIdProps } from '../utils';
+import { getUserIdProps, StoreCidCookie, UserIdProps } from '../utils';
 import Button from './button';
 import Heading from './heading';
 
@@ -39,11 +41,17 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 			postal: '94104',
 			region: 'CA',
 			tz: 'America/Los_Angeles'
-		}
+		},
+		customizeButton: false
+	};
+
+	const localContext: LocalContext = {
+		showHeading: true,
+		sensitiveInfo: 'Secret'
 	};
 
 	const { props: { uid }} = await getUserIdProps(ctx);
-	const { props: evolvProps } = await getEvolvServerSideProps({ client: options, uid, remoteContext }, ctx);
+	const { props: evolvProps } = await getEvolvServerSideProps({ client: options, uid, remoteContext, localContext }, ctx);
 
 	return {
 		props: {
