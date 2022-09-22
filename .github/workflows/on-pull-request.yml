@@ -1,0 +1,41 @@
+name: Pull Requests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  test:
+    name: Testing and Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          npx --yes lerna bootstrap
+
+      - name: Build packages
+        run: |
+          npx lerna run build --scope=@evolv/react
+          npx lerna run build --scope=@evolv/nextjs
+
+      - name: Run tests
+        run: |
+          npm test
+
+      - name: Lint
+        run: |
+          npm run lint

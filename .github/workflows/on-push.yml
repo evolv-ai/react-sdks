@@ -1,0 +1,30 @@
+name: Tag Build
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  tag:
+    name: Tag Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Ref
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.push.after }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Tag
+        run: |
+          npx --yes -- lerna version --yes
