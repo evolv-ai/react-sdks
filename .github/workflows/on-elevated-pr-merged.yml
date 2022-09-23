@@ -5,7 +5,7 @@ name: Tag Build
 
 on:
   repository_dispatch:
-    types: ['elevated:pull_request.merged']
+    types: ['elevated:pull_request.merged', 'escalated-cherry-pick-command']
 
 permissions:
   contents: write
