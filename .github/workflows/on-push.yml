@@ -1,11 +1,9 @@
-# Action runs using the credentials of the Evolv Bot app, which has been permitted to
-# bypass branch protections on 'main'
-
 name: Tag Build
 
 on:
-  repository_dispatch:
-    types: ['elevated:pull_request.merged', 'escalated-cherry-pick-command']
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -14,11 +12,12 @@ permissions:
 jobs:
   tag:
     name: Tag Build
-    if: github.event.client_payload.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Ref
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.push.after }}
 
       - name: Setup Node
         uses: actions/setup-node@v3
