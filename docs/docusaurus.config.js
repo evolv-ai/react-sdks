@@ -9,8 +9,8 @@ const config = {
 	// eslint-disable-next-line max-len
 	tagline: 'Use AI to automatically discover, personalize, and serve progressively better journeys by continuously adapting to live user behavior.',
 	url: 'https://evolv.ai',
-	baseUrl: '/',
-	onBrokenLinks: 'throw',
+	baseUrl: '/react-sdks/',
+	onBrokenLinks: 'log',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.png',
 
