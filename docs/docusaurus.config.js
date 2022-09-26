@@ -1,5 +1,4 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
 const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
@@ -19,9 +18,6 @@ const config = {
 	organizationName: 'evolv-ai',
 	projectName: 'react-sdks',
 
-	// Even if you don't use internalization, you can use this field to set useful
-	// metadata like html lang. For example, if your site is Chinese, you may want
-	// to replace "en" with "zh-Hans".
 	i18n: {
 		defaultLocale: 'en',
 		locales: ['en'],
@@ -37,6 +33,9 @@ const config = {
 				entryPointStrategy: 'packages',
 				tsconfig: '../tsconfig.json',
 				out: 'api',
+				excludePrivate: true,
+				excludeProtected: true,
+				disableSources: true,
 				sidebar: {
 					fullNames: true,
 					position: 3
@@ -51,6 +50,7 @@ const config = {
 			/** @type {import('@docusaurus/preset-classic').Options} */
 			({
 				docs: {
+					routeBasePath: '/',
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
@@ -60,6 +60,7 @@ const config = {
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
 				},
+				blog: false
 			}),
 		],
 	],
@@ -67,11 +68,16 @@ const config = {
 	themeConfig:
 	/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
+			colorMode: {
+				defaultMode: 'light',
+				respectPrefersColorScheme: true
+			},
 			navbar: {
 				title: 'React SDKs',
 				logo: {
 					alt: 'Evolv AI',
-					src: 'img/logo.svg',
+					src: 'img/wordmark-light.svg',
+					srcDark: 'img/wordmark-dark.svg'
 				},
 				items: [
 					{
@@ -128,6 +134,7 @@ const config = {
 			prism: {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
+				defaultLanguage: 'typescript'
 			},
 		}),
 };

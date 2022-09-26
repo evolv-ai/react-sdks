@@ -50,6 +50,9 @@ export const EvolvConsumer: FC<{ children: (client: ClientAdapter) => JSX.Elemen
 		</EvolvContext.Consumer>
 	);
 
+/**
+ * Returns the client adapter, which contains values such as the Evolv client and hydrated state.
+ */
 export function useEvolv(): ClientAdapter {
 	const adapter = useContext(EvolvContext);
 
