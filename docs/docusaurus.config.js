@@ -8,7 +8,7 @@ const config = {
 	title: 'Evolv AI React SDKs',
 	// eslint-disable-next-line max-len
 	tagline: 'Use AI to automatically discover, personalize, and serve progressively better journeys by continuously adapting to live user behavior.',
-	url: 'https://evolv.ai',
+	url: 'https://evolv-ai.github.io',
 	baseUrl: '/react-sdks/',
 	onBrokenLinks: 'log',
 	onBrokenMarkdownLinks: 'warn',
@@ -54,8 +54,12 @@ const config = {
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
-					editUrl:
-						'https://github.com/evolv-ai/react-sdks/tree/main/docs',
+					editUrl: 'https://github.com/evolv-ai/react-sdks/tree/main/docs',
+					versions: {
+						current: {
+							label: 'v1'
+						}
+					}
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
@@ -84,7 +88,7 @@ const config = {
 						type: 'doc',
 						docId: 'intro',
 						position: 'left',
-						label: 'Tutorial',
+						label: 'Guides',
 					},
 					{
 						position: 'left',
@@ -107,29 +111,58 @@ const config = {
 				style: 'dark',
 				links: [
 					{
+						title: 'Evolv AI',
+						items: [
+							{
+								label: 'Home',
+								to: 'https://evolv.ai',
+							},
+							{
+								label: 'Blog',
+								to: 'https://blog.evolv.ai',
+							},
+							{
+								label: 'About',
+								to: 'https://evolv.ai/about',
+							},
+							{
+								label: 'Contact',
+								to: 'https://evolv.ai/contact',
+							},
+						]
+					},
+					{
 						title: 'Docs',
 						items: [
 							{
-								label: 'Tutorial',
+								label: 'Guides',
 								to: '/docs/intro',
+							},
+							{
+								label: 'API',
+								to: '/docs/api',
 							},
 						],
 					},
 					{
-						title: 'More',
+						title: 'Resources',
 						items: [
 							{
+								label: 'Help',
+								to: 'https://evolvai.zendesk.com',
+							},
+							{
 								label: 'NPM',
-								to: 'https://www.npmjs.com/package/@evolv/nextjs',
+								to: 'https://www.npmjs.com/org/evolv',
 							},
 							{
 								label: 'GitHub',
-								href: 'https://github.com/facebook/docusaurus',
+								href: 'https://github.com/evolv-ai/react-sdks',
 							},
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} Evolv Technology Solutions, Inc. Built with Docusaurus.`,
+				copyright: `Copyright © ${new Date().getFullYear()} Evolv AI. All rights reserved.`,
 			},
 			prism: {
 				theme: lightCodeTheme,
