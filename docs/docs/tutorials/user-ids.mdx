@@ -1,0 +1,13 @@
+---
+sidebar_position: 5
+---
+
+# User IDs
+The `<EvolvProvider />` requires a `uid` prop to identify the current user, to allocate a variant to that user
+consistently, and to correlate the user's activity with the allocated variant. In order to be agnostic as to how
+the UID is persisted, the SDKs do not automatically generate a user ID. And therefore, your application must generate
+and provide its own UID to the `<EvolvProvider />`.
+
+Example strategies of how to generate and persist UIDs can be found here:
+* [React Application](https://github.com/evolv-ai/react-sdks/tree/main/examples/react/src/utils/uid.ts)
+* [NextJS Application](https://github.com/evolv-ai/react-sdks/tree/main/examples/nextjs/src/utils/uid.ts)

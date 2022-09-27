@@ -1,0 +1,101 @@
+---
+sidebar_position: 1
+title: Provider
+description: ''
+---
+
+# Provider for NextJS
+Configuring the `<EvolvProvider />` for NextJS applications requires a few more steps. Furthermore, the provider
+must be included in every page component or within a [Custom App](https://nextjs.org/docs/advanced-features/custom-app)
+or [Custom Document](https://nextjs.org/docs/advanced-features/custom-document).
+
+## Configure `getServerSideProps()`
+NextJS allows you to export a `getServerSideProps()` loader function from your page component, which must resolve
+before NextJS will send a response for a page request.
+
+[NextJS Documentation for `getServerSideProps()`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
+
+In order to properly hydrate your page with the Evolv variant, `getServerSideProps()` must also wait for Evolv to initialize.
+The SDK provides its own loader function, `getEvolvServerSideProps()`, for incorporating Evolv into your loader function.
+Using this loader function will inject the data needed by `<EvolvProvider />` into the page props.
+
+See also:
+* [API Documentation](/api/modules/evolv_nextjs#getevolvserversideprops)
+* [Return Type](/api/interfaces/evolv_nextjs.EvolvServerSideProps)
+
+
+### Usages
+If your page does not already export its own `getServerSideProps()` function, you can use the shorter form.
+
+```tsx title="src/pages/index.tsx" showLineNumbers
+import { getEvolvServerSideProps } from 'next';
+
+const Page = () => {
+	// ...
+};
+
+export const getServerSideProps = getEvolvServerSideProps(options);
+```
+
+If your page does export its own `getServerSideProps()` function, use the longer form inside the page's
+`getServerSideProps()` function to merge together your page props and Evolv props.
+
+```tsx title="src/pages/index.tsx" showLineNumbers
+import { getEvolvServerSideProps, GetServerSidePropsContext } from 'next';
+
+const Page = () => {
+    // ...
+};
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+	// highlight-start
+	const { props: evolvProps } = await getEvolvServerSideProps({
+		client: options,
+		uid,
+		remoteContext,
+		localContext
+	}, ctx);
+	// highlight-end
+
+	return {
+		props: {
+			...evolvProps
+		}
+	};
+}
+```
+
+## Add `<EvolvProvider />` to your page
+Adding the `<EvolvProvider />` to your NextJS application differs slightly from the normal usage. In order to properly
+synchronize the variant state on both the server-side and client-side, the `<EvolvProvider />` also needs a value for
+the `hydratedState` prop. When the result of `getEvolvServerSideProps()` has been incorporated into `getServerSideProps()`,
+`pageProps` will include values for `hydratedState` and `remoteContext`.
+
+:::note
+`hydratedState` and `remoteContext` may be available under a subproperty rather than `pageProps` itself depending on how
+you merged the result for `getEvolvServerSideProps()`.
+:::
+
+```tsx title="src/pages/index.tsx" showLineNumbers
+import { EvolvProvider, EvolvServerSideProps } from '@evolv/nextjs';
+import React, { FC } from 'react';
+
+interface Props {}
+
+const Page: FC<Props & EvolvServerSideProps> = (pageProps) => {
+	return (
+		<EvolvProvider
+			options={options}
+			uid={uid}
+			// highlight-start
+			hydratedState={pageProps.hydratedState}
+			remoteContext={pageProps.remoteContext}
+			// highlight-end
+		>
+			<h1>My NextJS page</h1>
+		</EvolvProvider>
+	);
+}
+
+export default Page;
+```

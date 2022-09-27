@@ -1,0 +1,145 @@
+---
+sidebar_position: 4
+---
+
+# Hooks
+The SDKs expose several useful React hooks.
+
+## `useEvolv()`
+Returns the client adapter, which contains values such as the Evolv client and hydrated state.
+
+### Example
+```tsx title="src/components/App.tsx" showLineNumbers
+import { useEvolv } from '@evolv/nextjs';
+import React, { FC } from 'react';
+
+const App: FC = (props) => {
+	const { client } = useEvolv();
+
+	return (
+		<div></div>
+	);
+};
+```
+
+### See Also
+* [API Documentation](/api/modules/evolv_react#useevolv)
+
+## `useVariable()`
+
+The `useVariable()` is the most commonly used hook. This hook returns the variant allocated to the current user for the given variable.
+
+### Arguments
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `string` | `true` | Name of variable |
+| `initialValue` | `any` | `true` | Value to use before Evolv initializes or in the event of an error |
+
+### Example
+```tsx title="src/components/Button.tsx" showLineNumbers
+import { useVariable } from '@evolv/nextjs';
+import React, { FC } from 'react';
+
+const Button: FC = (props) => {
+	const buttonText = useVariable('button.text', 'Button');
+
+	return (
+		<button>
+			{buttonText}
+		</button>
+	);
+};
+```
+
+### See Also
+* [API Documentation](/api/modules/evolv_react#usevariable)
+
+## `useContextState()`
+The `useContextState()` is similar to React's `useState()` hook. This hook sets a value on the Evolv context and will
+trigger a reaction that reevaluates variables based on the new context.
+
+### Arguments
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `string` | `true` | Name of variable |
+
+### Example
+```tsx title="src/components/page.tsx" showLineNumbers
+import { useContextState, useVariable } from '@evolv/nextjs';
+import React, { FC } from 'react';
+
+const Page: FC = () => {
+	const headingText = useVariable('heading.text', 'Heading');
+	const [showHeading, setShowHeading] = useContextState('showHeading');
+
+	return <>
+		<button onClick={() => setShowHeading(showHeading) }>
+			{showHeading ? 'Hide' : 'Show'}
+		</button>
+		{showHeading && (
+			<h1>{headingText}</h1>
+		)}
+	</>;
+};
+```
+
+### See Also
+* [API Documentation](/api/modules/evolv_react#usecontextstate)
+
+## `useIsKeyActive()`
+The `useIsKeyActive()` hook returns whether the given key is active or not.
+
+### Arguments
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `string` | `true` | Name of variable |
+
+### Example
+```tsx title="src/components/page.tsx" showLineNumbers
+import { useIsKeyActive, useVariable } from '@evolv/nextjs';
+import React, { FC } from 'react';
+
+const Page: FC = () => {
+	const headingText = useVariable('heading.text', 'Heading');
+	const isHeadingActive = useIsKeyActive('heading.text');
+
+	return <>
+		{isHeadingActive && (
+			<h1>{headingText}</h1>
+		)}
+	</>;
+};
+```
+
+### See Also
+* [API Documentation](/api/modules/evolv_react#useiskeyactive)
+
+## `useConfig()`
+The `useConfig()` hook returns the value of the given configuration key.
+
+### Arguments
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `string` | `true` | Name of configuration value |
+| `initialValue` | `any` | `true` | Value to use before Evolv initializes or in the event of an error |
+
+### Example
+```tsx title="src/components/page.tsx" showLineNumbers
+import { useConfig } from '@evolv/nextjs';
+import React, { FC } from 'react';
+
+const Page: FC = () => {
+	const experiments = useConfig('_experiments', []);
+
+	return (
+		<div>Active Experiments: {experiments.length}</div>
+	);
+};
+```
+
+### See Also
+* [API Documentation](/api/modules/evolv_react#useconfig)

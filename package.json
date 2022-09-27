@@ -14,6 +14,7 @@
     "prepare": "husky install"
   },
   "workspaces": [
+    "docs",
     "examples/nextjs",
     "examples/react",
     "packages/nextjs",
