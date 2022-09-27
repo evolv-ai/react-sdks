@@ -1,6 +1,7 @@
 {
   "name": "@evolv/nextjs",
   "version": "1.0.4",
+  "description": "NextJS SDK for the Evolv AI Platform",
   "license": "Apache-2.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,6 +17,14 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "evolv",
+    "ai",
+    "optimization",
+    "experience optimization",
+    "ecommerce"
+  ],
+  "homepage": "https://evolv-ai.github.io/react-sdks",
   "repository": {
     "type": "git",
     "url": "https://github.com/evolv-ai/react-sdks"
