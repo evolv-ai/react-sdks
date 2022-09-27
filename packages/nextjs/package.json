@@ -1,6 +1,6 @@
 {
   "name": "@evolv/nextjs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "Apache-2.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -24,7 +24,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@evolv/react": "^1.0.3"
+    "@evolv/react": "^1.0.4"
   },
   "peerDependencies": {
     "next": "^12.2.5",
