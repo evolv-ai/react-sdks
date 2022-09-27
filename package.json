@@ -1,7 +1,9 @@
 {
   "name": "@evolv/react-sdks",
   "version": "1.0.0",
+  "description": "React SDKs for the Evolv AI Platform",
   "license": "Apache-2.0",
+  "private": true,
   "scripts": {
     "prestart": "lerna bootstrap",
     "start": "npm-run-all --parallel start:*",
@@ -20,9 +22,13 @@
     "packages/nextjs",
     "packages/react"
   ],
+  "homepage": "https://evolv-ai.github.io/react-sdks",
   "repository": {
     "type": "git",
     "url": "https://github.com/evolv-ai/react-sdks"
+  },
+  "engines": {
+    "npm": ">=8.5.0"
   },
   "devDependencies": {
     "@evolv/eslint-config": "^1.1.3",
