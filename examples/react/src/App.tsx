@@ -1,23 +1,24 @@
-import { useVariable } from '@evolv/react';
-import { ContextToggle } from './ContextToggle';
+import React from 'react';
+import { useVariable } from "@evolv/react";
+import { ContextToggle } from "./ContextToggle";
 
 
-export default function App() {
-	const buttonColor = useVariable('m1e9d7tg9.c1zj181kr', undefined);
-	const buttonText = useVariable('m1e9d7tg9.vp2xajnk0', 'Button');
+function App() {
+  const buttonText: string = useVariable('cta-button.text', 'Button');
+  const buttonColor: string = useVariable('cta-button.color', 'white');
 
-	return (
-		<div className="App">
-			<ContextToggle keyName="customizeButton" />
-			<div>
-				<button
-					type="button"
-					className="btn btn-light"
-					style={{ backgroundColor: buttonColor }}
-				>
-					{buttonText}
-				</button>
-			</div>
-		</div>
-	);
+  return (
+    <div className="App">
+      <ContextToggle keyName="customizeButton" />
+      <button
+        type="button"
+        className="btn btn-light"
+        style={{ backgroundColor: buttonColor }}
+      >
+        {buttonText}
+      </button>
+    </div>
+  );
 }
+
+export default App;

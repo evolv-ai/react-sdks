@@ -1,26 +1,27 @@
-import { EvolvClientOptions, EvolvProvider } from '@evolv/react';
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import App from './App';
-import { getUid } from './utils/uid';
+import { EvolvProvider, EvolvClientOptions } from "@evolv/react";
 
 
-const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 
-const options: EvolvClientOptions = JSON.parse(process.env.REACT_APP_EVOLV_CONFIG ?? '{}');
-
-const remoteContext = {
-	customizeButton: false
+const options: EvolvClientOptions = {
+  environment: "a925240014"
 };
 
-const uid = getUid();
+const remoteContext = {
+  customizeButton: false
+};
 
-ReactDOM.render(
-	<StrictMode>
-		<EvolvProvider options={options} uid={uid} remoteContext={remoteContext}>
-			<App />
-		</EvolvProvider>
-	</StrictMode>
-	, rootElement
+const uid = '1234.567';
+
+root.render(
+  <React.StrictMode>
+    <EvolvProvider options={options} uid={uid} remoteContext={remoteContext}>
+      <App/>
+    </EvolvProvider>
+  </React.StrictMode>
 );

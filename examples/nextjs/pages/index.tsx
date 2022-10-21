@@ -1,17 +1,15 @@
-import {
-	EvolvClientOptions, EvolvProvider, EvolvServerSideProps, getEvolvServerSideProps, LocalContext, RemoteContext
-} from '@evolv/nextjs';
-import { GetServerSidePropsContext } from 'next';
-import { FC } from 'react';
-
-import { getUserIdProps, StoreCidCookie, UserIdProps } from '../utils';
-import Button from './button';
-import Heading from './heading';
+import type { GetServerSidePropsContext, NextPage } from 'next';
+import { EvolvClientOptions, LocalContext, RemoteContext } from '@evolv/client';
+import { EvolvProvider, EvolvServerSideProps, getEvolvServerSideProps } from '@evolv/nextjs';
+import Button from '../components/Button';
+import { getUserIdProps, UserIdProps } from '../utils';
 
 
-const options: EvolvClientOptions = JSON.parse(process.env.NEXT_PUBLIC_EVOLV_CONFIG ?? '{}');
+const options: EvolvClientOptions = {
+	environment: 'a925240014'
+};
 
-const Home: FC<EvolvServerSideProps & UserIdProps> = (props) => {
+const Home: NextPage<EvolvServerSideProps & UserIdProps> = (props) => {
 	return (
 		<EvolvProvider
 			options={options}
@@ -19,39 +17,23 @@ const Home: FC<EvolvServerSideProps & UserIdProps> = (props) => {
 			hydratedState={props.hydratedState}
 			remoteContext={props.remoteContext}
 		>
-			{/* Use a component such as this to save the CID in a cookie */}
-			<StoreCidCookie />
-
-			<Heading />
-			<Button />
+			<Button/>
 		</EvolvProvider>
 	);
 };
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 	const remoteContext: Partial<RemoteContext> = {
-		browser: 'chrome',
-		device: 'desktop',
-		geo: {
-			city: 'San Francisco',
-			country: 'US',
-			lat: '37.789640',
-			lon: '-122.401450',
-			metro: '807',
-			postal: '94104',
-			region: 'CA',
-			tz: 'America/Los_Angeles'
-		},
 		customizeButton: false
 	};
-
-	const localContext: LocalContext = {
-		showHeading: true,
-		sensitiveInfo: 'Secret'
-	};
+	const localContext: LocalContext = {};
 
 	const { props: { uid }} = await getUserIdProps(ctx);
-	const { props: evolvProps } = await getEvolvServerSideProps({ client: options, uid, remoteContext, localContext }, ctx);
+	const { props: evolvProps } = await getEvolvServerSideProps({
+		client: options,
+		uid,
+		remoteContext,
+	}, ctx);
 
 	return {
 		props: {
