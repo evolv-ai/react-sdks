@@ -73,7 +73,7 @@ const config = {
 	/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
 			colorMode: {
-				defaultMode: 'light',
+				defaultMode: 'dark',
 				respectPrefersColorScheme: true
 			},
 			navbar: {
@@ -86,7 +86,7 @@ const config = {
 				items: [
 					{
 						type: 'doc',
-						docId: 'intro',
+						docId: 'guides/quick-start',
 						position: 'left',
 						label: 'Guides',
 					},
@@ -94,7 +94,7 @@ const config = {
 						position: 'left',
 						label: 'API',
 						activeBasePath: 'docs',
-						to: 'docs/api'
+						to: 'api'
 					},
 					{
 						type: 'docsVersionDropdown',
@@ -136,7 +136,7 @@ const config = {
 						items: [
 							{
 								label: 'Guides',
-								to: '/docs/intro',
+								to: '/docs/quick-start',
 							},
 							{
 								label: 'API',

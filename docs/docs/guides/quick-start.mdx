@@ -1,0 +1,220 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Quick Start
+
+The Evolv AI platform offers SDKs for React-based frameworks like React (for web) and NextJS.
+The SDKs allow you to embed Evolv directly into your application for a more seamless experience.
+
+:::note
+The following guide is written in TypeScript, but you can apply it to a JavaScript project as well.
+:::
+
+## Requirements
+* A web-based React application or NextJS application.
+  * React v17 or higher
+
+## Steps
+### 1. Install the appropriate SDK for your framework.
+
+<Tabs groupId="languages">
+<TabItem value="react" label="React" default>
+
+```bash
+npm install @evolv/react
+```
+
+</TabItem>
+<TabItem value="nextjs" label="NextJS">
+
+```bash
+npm install @evolv/nextjs
+```
+
+</TabItem>
+</Tabs>
+
+### 2. Add the `<EvolvProvider />`.
+* You can use the included environment ID for the demo.
+* Generate the `uid` dynamically or set it as a static value.
+   * A new `uid` is required for a fresh allocation.
+* You should see requests to `participants.evolv.ai` in your browser's network tab.
+
+<Tabs groupId="languages">
+<TabItem value="react" label="React" default>
+
+```tsx title="src/index.tsx" showLineNumbers
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+// highlight-start
+import { EvolvProvider, EvolvClientOptions } from "@evolv/react";
+// highlight-end
+
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+
+// highlight-start
+const options: EvolvClientOptions = {
+  environment: "a925240014"
+};
+
+const uid = '1234.567';
+// highlight-end
+
+root.render(
+  <React.StrictMode>
+    // highlight-start
+    <EvolvProvider options={options} uid={uid}>
+      <App/>
+    </EvolvProvider>
+    // highlight-end
+  </React.StrictMode>
+);
+```
+
+See: [Provider/React](/guides/provider/react) for more information.
+
+</TabItem>
+<TabItem value="nextjs" label="NextJS">
+
+```tsx title="pages/index.tsx" showLineNumbers
+import type { GetServerSidePropsContext, NextPage } from 'next';
+// highlight-start
+import { EvolvClientOptions, LocalContext, RemoteContext } from "@evolv/client";
+import { EvolvProvider, EvolvServerSideProps, getEvolvServerSideProps } from "@evolv/nextjs";
+// highlight-end
+import Button from "../components/button";
+
+
+// highlight-start
+const options: EvolvClientOptions = {
+  environment: "a925240014"
+};
+// highlight-end
+
+const Home: NextPage<EvolvServerSideProps & { uid: string }> = (props) => {
+  return (
+    // highlight-start
+    <EvolvProvider
+      options={options}
+      uid={props.uid}
+      hydratedState={props.hydratedState}
+      remoteContext={props.remoteContext}
+    >
+    // highlight-end
+      <Button/>
+    // highlight-start
+    </EvolvProvider>
+    // highlight-end
+  );
+};
+
+// highlight-start
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const remoteContext: Partial<RemoteContext> = {};
+  const localContext: LocalContext = {};
+
+  const { props: { uid } } = '123.456';
+  const { props: evolvProps } = await getEvolvServerSideProps({
+    client: options,
+    uid,
+    remoteContext,
+  }, ctx);
+
+  return {
+    props: {
+      ...evolvProps,
+      uid
+    }
+  };
+}
+// highlight-end
+
+export default Home;
+```
+
+See: [Provider/NextJS](/guides/provider/nextjs) for more information.
+
+</TabItem>
+</Tabs>
+
+### 3. Add the `useVariable()` hook to a component.
+
+<Tabs groupId="languages">
+<TabItem value="react" label="React" default>
+
+```tsx title="src/App.tsx" showLineNumbers
+import React from 'react';
+// highlight-start
+import { useVariable } from "@evolv/react";
+// highlight-end
+
+
+function App() {
+  // highlight-start
+  const buttonText: string = useVariable('cta-button.text', 'Button');
+  const buttonColor: string = useVariable('cta-button.color', 'white');
+  // highlight-end
+
+  return (
+    <div className="App">
+      <button
+        type="button"
+        className="btn btn-light"
+        style={{ backgroundColor: buttonColor }}
+      >
+        {buttonText}
+      </button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+</TabItem>
+<TabItem value="nextjs" label="NextJS">
+
+```tsx title="components/Button.tsx" showLineNumbers
+// highlight-start
+import { useVariable } from '@evolv/nextjs';
+// highlight-end
+
+export default function Button() {
+  // highlight-start
+  const buttonText: string = useVariable('cta-button.text', 'Button');
+  const buttonColor: string = useVariable('cta-button.color', 'unset');
+  // highlight-end
+
+  return (
+    <button
+      style={{ backgroundColor: buttonColor }}
+    >
+      {buttonText}
+    </button>
+  );
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+See: [Hooks](/guides/hooks) for more information.
+
+### 4. Start the app.
+
+When the page loads, your `uid` is allocated one of the active combinations of variants.
+The button text and background color will appear with a combination of these values.
+
+* Button text:
+  * Control: `Control Button Text`
+  * Variant: `Variant Button Text`
+* Button color:
+  * Control: `grey`
+  * Variant: `green`
+
+The button has a default text value of 'Button'. This helps you identify when the control button text is active compared to the default text.

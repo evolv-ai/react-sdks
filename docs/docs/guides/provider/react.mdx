@@ -1,0 +1,71 @@
+---
+title: React
+description: 'Implement the <EvolvProvider> in a React application.'
+---
+
+# Provider for React
+
+:::info
+Any components that will make use of the Evolv AI platform must be wrapped by `<EvolvProvider />`.
+:::
+
+## Configure client options
+The `<EvolvProvider />` component is responsible for instantiating an instance of the Evolv client, which will
+retrieve the configuration and variables for your projects. The only required option is `environment`.
+
+:::tip
+For existing customers, the environment ID can be obtained from the Environments page in the [Evolv AI Manager](https://app.evolv.ai).
+:::
+
+```tsx title="src/index.tsx" showLineNumbers
+import { EvolvClientOptions } from '@evolv/react';
+
+const options: EvolvClientOptions = {
+	environment: '[environmentId]'
+};
+```
+
+See also:
+* [List of options](/api/interfaces/evolv_react.EvolvClientOptions)
+
+## Add `<EvolvProvider />` to your application or page
+
+:::info
+For usage in NextJS applications, see [here](./nextjs/provider).
+:::
+
+### Props
+
+| Name            | Type     | Required | Description |
+| --------------- | ---------| -------- | -------------- |
+| `options`       | `object` | `true`   | Options passed to `EvolvClient`. [See list of options](../api/interfaces/evolv_react.EvolvClientOptions) |
+| `uid`           | `string` | `true`   | Unique identifier of the current user. See [User IDs](./user-ids) |
+| `hydratedState` | `object` | `false`  | Value to hydrate as the user's allocation variant. This is primarily used for server-side applications |
+| `remoteContext` | `object` | `false`  | Additional values added to the context |
+| `localContext`  | `object` | `false`  |  Additional values added to the context that will not be transmitted to Evolv |
+
+```tsx title="src/index.tsx" showLineNumbers
+import { EvolvProvider } from '@evolv/react';
+import React, { FC } from 'react';
+
+const App: FC = () => {
+	return (
+		// highlight-start
+		<EvolvProvider
+			options={options}
+			uid={uid}
+			remoteContext={remoteContext}
+		>
+		// highlight-end
+			<h1>My React app</h1>
+		// highlight-start
+		</EvolvProvider>
+		// highlight-end
+	);
+}
+
+export default App;
+```
+
+See also:
+* [API Documentation](/api/modules/evolv_react#evolvprovider)

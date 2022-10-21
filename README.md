@@ -27,6 +27,9 @@ npm start
 > also provide an `endpoint` option to point to a different stack.
 >  
 > ```
-> NEXT_PUBLIC_EVOLV_CONFIG='{"environment":"a9e21679ab","endpoint": "https://participants-stg.evolv.ai"}'
-> REACT_APP_EVOLV_CONFIG='{"environment":"a9e21679ab","endpoint": "https://participants-stg.evolv.ai"}'
+> NEXT_PUBLIC_EVOLV_CONFIG='{"environment":"a925240014","endpoint": "https://participants.evolv.ai"}'
+> REACT_APP_EVOLV_CONFIG='{"environment":"a925240014","endpoint": "https://participants.evolv.ai"}'
 > ```
+
+* React: [http://localhost:4001/](http://localhost:4001/)
+* NextJS: [http://localhost:4002/](http://localhost:4002/)
