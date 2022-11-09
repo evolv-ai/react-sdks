@@ -36,10 +36,6 @@ const config = {
 				excludePrivate: true,
 				excludeProtected: true,
 				disableSources: true,
-				sidebar: {
-					fullNames: true,
-					position: 3
-				}
 			}
 		]
 	],
@@ -88,13 +84,13 @@ const config = {
 						type: 'doc',
 						docId: 'guides/quick-start',
 						position: 'left',
-						label: 'Guides',
+						label: 'Docs',
 					},
 					{
 						position: 'left',
 						label: 'API',
 						activeBasePath: 'docs',
-						to: 'api'
+						to: 'guides/api'
 					},
 					{
 						type: 'docsVersionDropdown',
@@ -136,11 +132,11 @@ const config = {
 						items: [
 							{
 								label: 'Guides',
-								to: '/docs/quick-start',
+								to: '/guides/quick-start',
 							},
 							{
 								label: 'API',
-								to: '/docs/api',
+								to: '/guides/api',
 							},
 						],
 					},
@@ -169,6 +165,15 @@ const config = {
 				darkTheme: darkCodeTheme,
 				defaultLanguage: 'typescript'
 			},
+			docs: {
+				sidebar: {
+					hideable: true,
+				},
+			},
+			tableOfContents: {
+				minHeadingLevel: 2,
+				maxHeadingLevel: 3,
+			}
 		}),
 };
 

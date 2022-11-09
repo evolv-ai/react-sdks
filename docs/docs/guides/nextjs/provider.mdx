@@ -1,9 +1,3 @@
----
-sidebar_position: 1
-title: Provider
-description: ''
----
-
 # Provider for NextJS
 Configuring the `<EvolvProvider />` for NextJS applications requires a few more steps. Furthermore, the provider
 must be included in every page component or within a [Custom App](https://nextjs.org/docs/advanced-features/custom-app)
@@ -19,10 +13,9 @@ In order to properly hydrate your page with the Evolv variant, `getServerSidePro
 The SDK provides its own loader function, `getEvolvServerSideProps()`, for incorporating Evolv into your loader function.
 Using this loader function will inject the data needed by `<EvolvProvider />` into the page props.
 
-See also:
+#### See also
 * [API Documentation](/api/modules/evolv_nextjs#getevolvserversideprops)
 * [Return Type](/api/interfaces/evolv_nextjs.EvolvServerSideProps)
-
 
 ### Usages
 If your page does not already export its own `getServerSideProps()` function, you can use the shorter form.
