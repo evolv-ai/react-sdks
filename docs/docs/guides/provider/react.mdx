@@ -1,18 +1,20 @@
-# Provider
-The `<EvolvProvider />` is a top-level component that is responsible for instantiating the Evolv Client.
-The Evolv Client, in turn, is responsible for retrieving the configuration and variables for your projects and reporting
-data back to Evolv, such as confirmations.
+---
+title: React
+description: 'Implement the <EvolvProvider> in a React application.'
+---
+
+# Provider for React
 
 :::info
-Any components that will make use of the Evolv platform must be wrapped by `<EvolvProvider />`.
+Any components that will make use of the Evolv AI platform must be wrapped by `<EvolvProvider />`.
 :::
 
 ## Configure client options
-The `<EvolvProvider />` component is responsible for instantiating an instance of the Evolv client, which is in turn
-will retrieve the configuration and variables for your projects. The only required option is `environment`.
+The `<EvolvProvider />` component is responsible for instantiating an instance of the Evolv client, which will
+retrieve the configuration and variables for your projects. The only required option is `environment`.
 
 :::tip
-The `environment` ID can be obtained from the Environments page in Manager.
+For existing customers, the environment ID can be obtained from the Environments page in the [Evolv AI Manager](https://app.evolv.ai).
 :::
 
 ```tsx title="src/index.tsx" showLineNumbers
@@ -23,8 +25,8 @@ const options: EvolvClientOptions = {
 };
 ```
 
-See also:
-* [List of options](/api/interfaces/evolv_react.EvolvClientOptions)
+#### See also
+* [EvolvClientOptions](/api/interfaces/evolv_react.EvolvClientOptions)
 
 ## Add `<EvolvProvider />` to your application or page
 
@@ -65,5 +67,5 @@ const App: FC = () => {
 export default App;
 ```
 
-See also:
+#### See also
 * [API Documentation](/api/modules/evolv_react#evolvprovider)

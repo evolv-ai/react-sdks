@@ -1,4 +1,14 @@
+---
+title: NextJS
+description: 'Implement the <EvolvProvider> in a NextJS application.'
+---
+
 # Provider for NextJS
+
+:::info
+Any components that will make use of the Evolv AI platform must be wrapped by `<EvolvProvider />`.
+:::
+
 Configuring the `<EvolvProvider />` for NextJS applications requires a few more steps. Furthermore, the provider
 must be included in every page component or within a [Custom App](https://nextjs.org/docs/advanced-features/custom-app)
 or [Custom Document](https://nextjs.org/docs/advanced-features/custom-document).
@@ -17,11 +27,12 @@ Using this loader function will inject the data needed by `<EvolvProvider />` in
 * [API Documentation](/api/modules/evolv_nextjs#getevolvserversideprops)
 * [Return Type](/api/interfaces/evolv_nextjs.EvolvServerSideProps)
 
+
 ### Usages
 If your page does not already export its own `getServerSideProps()` function, you can use the shorter form.
 
 ```tsx title="src/pages/index.tsx" showLineNumbers
-import { getEvolvServerSideProps } from 'next';
+import { getEvolvServerSideProps } from '@evolv/nextjs';
 
 const Page = () => {
 	// ...
@@ -34,7 +45,8 @@ If your page does export its own `getServerSideProps()` function, use the longer
 `getServerSideProps()` function to merge together your page props and Evolv props.
 
 ```tsx title="src/pages/index.tsx" showLineNumbers
-import { getEvolvServerSideProps, GetServerSidePropsContext } from 'next';
+import { getEvolvServerSideProps } from '@evolv/nextjs';
+import { GetServerSidePropsContext } from 'next';
 
 const Page = () => {
     // ...
