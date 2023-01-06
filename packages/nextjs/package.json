@@ -1,6 +1,6 @@
 {
   "name": "@evolv/nextjs",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "NextJS SDK for the Evolv AI Platform",
   "license": "Apache-2.0",
   "main": "./dist/index.js",
@@ -33,7 +33,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@evolv/react": "^1.0.9"
+    "@evolv/react": "^1.0.10"
   },
   "peerDependencies": {
     "next": "^12.2.5",
