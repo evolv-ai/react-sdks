@@ -37,7 +37,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@evolv/client": "2.1.11-alpha-67ed499",
+    "@evolv/client": "2.4.3-alpha-84376ed",
     "@evolv/hashing": "^1.1.0",
     "base64-arraybuffer": "^1.0.2",
     "deepmerge": "^4.2.2"
