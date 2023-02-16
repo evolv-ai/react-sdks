@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.11 (2023-02-16)
+
+
+### Bug Fixes
+
+* **AP-2327:** bump version of @evolv/client ([#34](https://github.com/evolv-ai/react-sdks/issues/34)) ([ccd0434](https://github.com/evolv-ai/react-sdks/commit/ccd043446e408ecb7d5ca926ca1635dc9ef5c50e))
+
+
+
+
+
 ## 1.0.10 (2023-01-06)
 
 **Note:** Version bump only for package @evolv/react-sdks
