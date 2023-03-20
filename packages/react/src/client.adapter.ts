@@ -43,7 +43,11 @@ export class ClientAdapter {
 		const keys = await this.client.getActiveKeys();
 
 		for (const key of keys.current ?? []) {
-			this.hydratedState[key] = await this.client.get(key);
+			const value = await this.client.get(key);
+
+			if (value !== undefined) {
+				this.hydratedState[key] = value;
+			}
 		}
 	}
 
