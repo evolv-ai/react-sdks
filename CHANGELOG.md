@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.12 (2023-03-21)
+
+
+### Bug Fixes
+
+* **AP-2463:** fix calls to client.get() that stall next server ([#35](https://github.com/evolv-ai/react-sdks/issues/35)) ([eb79b3a](https://github.com/evolv-ai/react-sdks/commit/eb79b3a9514e0f5d6057d448513e605a5420ea2b))
+
+
+
+
+
 ## 1.0.11 (2023-02-16)
 
 
