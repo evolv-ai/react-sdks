@@ -1,13 +1,22 @@
-import { ClientAdapter, EvolvClientOptions, LocalContext, RemoteContext } from '@evolv/react';
+import { ClientAdapter, debug as Debug, EvolvClientOptions, LocalContext, RemoteContext } from '@evolv/react';
 import { GetServerSidePropsContext } from 'next';
 import { GetServerSidePropsResult } from 'next/types';
 
-import { getClientName } from './utils/index.js';
+import { getClientName, wait } from './utils/index.js';
 
+
+const DEFAULT_SERVER_SIDE_TIMEOUT = 300; // Milliseconds
 
 export interface EvolvOptions {
 	uid: string;
 	client: EvolvClientOptions;
+	/**
+	 * Duration in milliseconds after which server-side hydration of allocated variants will be skipped, and fallback
+	 * variants will be used instead for server-side rendering. Variant allocation will still occur on the client-side
+	 * but may exhibit flash as the client replaces the values rendered by the server.
+	 * @default 200
+	 */
+	serverSideTimeout?: number;
 	remoteContext?: Partial<RemoteContext>;
 	localContext?: Partial<LocalContext>;
 }
@@ -51,20 +60,38 @@ interface Result {
 export function getEvolvServerSideProps(options: EvolvOptions): PropsFactory<Result>;
 export function getEvolvServerSideProps(options: EvolvOptions, ctx: GetServerSidePropsContext): Promise<Result>;
 export function getEvolvServerSideProps(options: EvolvOptions, ctx?: GetServerSidePropsContext): Promise<Result> | PropsFactory<Result> {
+	const debug = Debug('server-side-props');
+
 	const factory = async (ctx: GetServerSidePropsContext) => {
+		const opts = {
+			serverSideTimeout: DEFAULT_SERVER_SIDE_TIMEOUT,
+			...options
+		};
+
 		const adapter = new ClientAdapter({
-			...options.client,
+			...opts.client,
 			clientName: getClientName()
 		});
 
-		adapter.initialize(options.uid, options.remoteContext, options.localContext);
+		adapter.initialize(opts.uid, opts.remoteContext, opts.localContext);
 
-		await adapter.hydrate();
+		debug('Hydrating');
+
+		const hydrated = await Promise.race([
+			adapter.hydrate().then(() => true),
+			wait(opts.serverSideTimeout).then(() => false)
+		]);
+
+		if (hydrated) {
+			debug('Hydrated');
+		} else {
+			debug('Timeout elapsed before hydration completed. Rendering on server-side will use fallback values instead');
+		}
 
 		return {
 			props: {
-				hydratedState: adapter.hydratedState,
-				remoteContext: options.remoteContext ?? {}
+				hydratedState: hydrated ? adapter.hydratedState : {},
+				remoteContext: opts.remoteContext ?? {}
 			}
 		};
 	};
