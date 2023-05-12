@@ -10,8 +10,7 @@ export const EvolvProvider: FC<EvolvProviderProps> =
 			{...props}
 			options={{
 				...options,
-				clientName: getClientName(),
-				pollForTimeUpdates: false,
+				clientName: getClientName()
 			}}
 		/>
 	);

@@ -70,8 +70,7 @@ export function getEvolvServerSideProps(options: EvolvOptions, ctx?: GetServerSi
 
 		const adapter = new ClientAdapter({
 			...opts.client,
-			clientName: getClientName(),
-			pollForTimeUpdates: false
+			clientName: getClientName()
 		});
 
 		adapter.initialize(opts.uid, opts.remoteContext, opts.localContext);
