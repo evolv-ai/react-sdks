@@ -23,7 +23,6 @@ npm start
 > NOTE: Replace the values of `environment` in the _.env.local_ file
 > if you have an environment of your own.
 
-
 > If your environment belongs to stack other than `prod`, you can
 > also provide an `endpoint` option to point to a different stack.
 >
@@ -31,6 +30,7 @@ npm start
 > NEXT_PUBLIC_EVOLV_CONFIG='{"environment":"a925240014","endpoint": "https://participants.evolv.ai"}'
 > REACT_APP_EVOLV_CONFIG='{"environment":"a925240014","endpoint": "https://participants.evolv.ai"}'
 > ```
+
 
 * React: [http://localhost:4001/](http://localhost:4001/)
 * NextJS: [http://localhost:4002/](http://localhost:4002/)
