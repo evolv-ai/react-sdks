@@ -33,6 +33,7 @@ export class ClientAdapter {
 			analytics: true,
 			clientName: 'react-sdk',
 			clientType: this.isBrowser ? 'direct' : 'proxied',
+			pollForTimeUpdates: this.isBrowser,
 			...options
 		});
 	}
