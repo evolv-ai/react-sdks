@@ -23,7 +23,6 @@ npm start
 > NOTE: Replace the values of `environment` in the _.env.local_ file
 > if you have an environment of your own.
 
-
 > If your environment belongs to stack other than `prod`, you can
 > also provide an `endpoint` option to point to a different stack.
 >
