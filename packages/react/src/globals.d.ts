@@ -5,6 +5,8 @@ declare global {
 		evolv: {
 			client: EvolvClient;
 			context: Context;
+			ssr: boolean;
+			onSsrClientInitialized: () => void;
 		};
 	}
 }

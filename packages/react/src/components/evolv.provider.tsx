@@ -1,5 +1,5 @@
 import { EvolvClientOptions, RemoteContext, LocalContext } from '@evolv/client';
-import React, { createContext, FC, useContext, useState } from 'react';
+import React, { createContext, FC, MutableRefObject, useContext, useState } from 'react';
 
 import { ClientAdapter } from '../client.adapter.js';
 
@@ -12,10 +12,11 @@ export interface EvolvProviderProps {
 	hydratedState?: Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 	remoteContext?: Partial<RemoteContext>;
 	localContext?: Partial<LocalContext>;
+	adapterRef?: MutableRefObject<ClientAdapter | undefined>;
 }
 
 export const EvolvProvider: FC<EvolvProviderProps> =
-	({ children, options, uid, hydratedState, remoteContext, localContext }) => {
+	({ children, options, uid, hydratedState, remoteContext, localContext, adapterRef }) => {
 		const [adapter] = useState(() => {
 			const instance = new ClientAdapter(options, hydratedState);
 
@@ -28,6 +29,10 @@ export const EvolvProvider: FC<EvolvProviderProps> =
 			globalThis.evolv ??= {};
 			globalThis.evolv.client = adapter.client;
 			globalThis.evolv.context = adapter.client.context;
+		}
+
+		if (adapterRef) {
+			adapterRef.current = adapter;
 		}
 
 		return (
