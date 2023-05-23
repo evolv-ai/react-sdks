@@ -104,3 +104,41 @@ const Page: FC<Props & EvolvServerSideProps> = (pageProps) => {
 
 export default Page;
 ```
+
+## Coexistence Mode
+You want to use the Evolv NextJS SDK while also including or injecting the Asset Manager (via something like Google Tag
+Manager) on the same page. In these scenarios you will need to activate **Coexistence Mode**, which instructs the Asset Manager
+to use the same instance of the Evolv client as the `<EvolvProvider>` is using.
+
+To activate **Coexistence Mode**, add the `<CoexistenceMode />` component to the `<head>` your page. This component must
+be added to the page so that it loads before the _webloader.js_ script. This will likely need to be done in the
+[Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) component.
+
+```tsx title="src/pages/_document.tsx" showLineNumbers
+import { CoexistenceMode } from '@evolv/nextjs';
+import { Html, Head, Main, NextScript } from 'next/document';
+import React, { FC } from 'react';
+
+const Document: FC = () => {
+	return (
+		<Html>
+			<Head>
+				// highlight-start
+				{/* This component must be added to the page so that it loads before the webloader.js script */}
+				<CoexistenceMode />
+				// highlight-end
+			</Head>
+			<body>
+				<Main />
+				<NextScript />
+			</body>
+		</Html>
+	);
+};
+
+export default Document;
+```
+
+See also:
+* [NextJS Documentation for Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document)
+* [Example](https://github.com/evolv-ai/react-sdks/tree/main/examples/nextjs/pages/_document.tsx)
