@@ -11,7 +11,8 @@
       "private": false
     },
     "publish": {
-      "private": false
+      "private": false,
+      "createRelease": "github"
     }
   }
 }
