@@ -13,6 +13,8 @@ jobs:
   tag:
     name: Tag Build
     runs-on: ubuntu-latest
+    outputs:
+      commit_sha: ${{ steps.sha.outputs.commit_sha }}
     steps:
       - name: Checkout Ref
         uses: actions/checkout@v3
@@ -34,6 +36,11 @@ jobs:
         run: |
           npx --yes -- lerna version --yes
 
+      - name: Save commit SHA
+        id: sha
+        run: |
+          echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
   publish:
     name: Publish
     runs-on: ubuntu-latest
@@ -45,6 +52,8 @@ jobs:
     steps:
       - name: Checkout Ref
         uses: actions/checkout@v3
+        with:
+          ref: ${{ needs.tag.outputs.commit_sha }}
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -81,7 +90,7 @@ jobs:
       - name: Checkout Ref
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.push.after }}
+          ref: ${{ needs.tag.outputs.commit_sha }}
 
       - name: Setup Node
         uses: actions/setup-node@v3
