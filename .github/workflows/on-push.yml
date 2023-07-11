@@ -69,7 +69,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install
+          npm ci
 
       - name: Build libraries
         run: |
@@ -105,7 +105,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npx --yes lerna bootstrap --ci
+          npm ci
 
       - name: Build libraries
         run: |
