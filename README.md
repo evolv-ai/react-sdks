@@ -28,7 +28,7 @@ npm start
 >
 > ```
 > NEXT_PUBLIC_EVOLV_CONFIG='{"environment":"a925240014","endpoint": "https://participants.evolv.ai"}'
-> REACT_APP_EVOLV_CONFIG='{"environment":"a925240014","endpoint": "https://participants.evolv.ai"}'
+> REACT_APP_EVOLV_CONFIG='{"environment":"a925240014","endpoint": "https://participants.evolv.ai"}' 
 > ```
 
 
