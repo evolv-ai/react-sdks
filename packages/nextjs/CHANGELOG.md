@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.16 (2023-07-12)
+
+
+### Bug Fixes
+
+* tagging broken from useWorkspaces ([#45](https://github.com/evolv-ai/react-sdks/issues/45)) ([9db41e7](https://github.com/evolv-ai/react-sdks/commit/9db41e7e35a2ec0ad21cae988df91016cfb6a247))
+
+
+
+
+
 ## 1.0.15 (2023-05-23)
 
 **Note:** Version bump only for package @evolv/nextjs
