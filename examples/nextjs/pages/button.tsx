@@ -1,8 +1,8 @@
 import { useContextState, useVariable } from '@evolv/nextjs';
 
 export default function Button() {
-	const buttonText = useVariable('movies.vp2xajnk0', 'control');
-	const buttonColor = useVariable('movies.c1zj181kr', 'unset');
+	const buttonText = useVariable('cta-button.text', 'control');
+	const buttonColor = useVariable('cta-button.color', 'unset');
 	const [, setCustomizeButton] = useContextState('customizeButton');
 
 	return (

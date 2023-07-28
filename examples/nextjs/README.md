@@ -3,7 +3,7 @@ NextJS Example Application
 
 ## Quick Start
 ```bash
-echo 'NEXT_PUBLIC_EVOLV_CONFIG={"environment":"a9e21679ab"}' > .env.local
+echo 'NEXT_PUBLIC_EVOLV_CONFIG={"environment":"9cc4eff101"}' > .env.local
 
 npm install
 npm run dev

@@ -12,11 +12,6 @@ export const App: FC<AppProps> =
 				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 				<meta name="theme-color" content="#000000"/>
 				<link rel="shortcut icon" href="/favicon.png"/>
-				<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-				      rel="stylesheet"
-				      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-				      crossOrigin="anonymous"
-				/>
 				<style>{`
 					.bd-placeholder-img {
 						font-size: 1.125rem;
