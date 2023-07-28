@@ -1,12 +1,12 @@
 import { EvolvClientOptions, RemoteContext, LocalContext } from '@evolv/client';
-import React, { createContext, FC, MutableRefObject, useContext, useState } from 'react';
+import React, { createContext, FC, MutableRefObject, PropsWithChildren, useContext, useState } from 'react';
 
 import { ClientAdapter } from '../client.adapter.js';
 
 
 const EvolvContext = createContext<ClientAdapter | null>(null);
 
-export interface EvolvProviderProps {
+export interface EvolvProviderProps extends PropsWithChildren<unknown> {
 	options: EvolvClientOptions;
 	uid: string;
 	hydratedState?: Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any

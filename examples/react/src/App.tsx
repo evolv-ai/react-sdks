@@ -3,8 +3,8 @@ import { ContextToggle } from './ContextToggle';
 
 
 export default function App() {
-	const buttonColor = useVariable('m1e9d7tg9.c1zj181kr', undefined);
-	const buttonText = useVariable('m1e9d7tg9.vp2xajnk0', 'Button');
+	const buttonColor = useVariable('cta-button.color', undefined);
+	const buttonText = useVariable('cta-button.text', 'Button');
 
 	return (
 		<div className="App">

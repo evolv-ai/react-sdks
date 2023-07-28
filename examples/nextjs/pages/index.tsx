@@ -42,7 +42,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 			region: 'CA',
 			tz: 'America/Los_Angeles'
 		},
-		customizeButton: false
+		customizeButton: true
 	};
 
 	const localContext: LocalContext = {
