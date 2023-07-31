@@ -5,8 +5,8 @@ import { GetServerSidePropsContext } from 'next';
 import { FC } from 'react';
 
 import { getUserIdProps, StoreCidCookie, UserIdProps } from '../utils';
-import Button from './button';
-import Heading from './heading';
+import Button from '../components/button';
+import Heading from '../components/heading';
 
 
 const options: EvolvClientOptions = JSON.parse(process.env.NEXT_PUBLIC_EVOLV_CONFIG ?? '{}');
