@@ -11,7 +11,7 @@
     "lint": "eslint src --ext=.ts,.tsx"
   },
   "dependencies": {
-    "@evolv/react": "file:../../packages/react",
+    "@evolv/react": "^2.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.1"
