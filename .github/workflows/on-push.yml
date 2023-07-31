@@ -34,7 +34,6 @@ jobs:
 
       - name: Tag
         run: |
-          npm install --global conventional-changelog-conventionalcommits
           npx --yes -- lerna version --yes
 
       - name: Save commit SHA
