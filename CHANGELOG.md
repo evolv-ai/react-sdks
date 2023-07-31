@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2023-07-31)
+
+
+* feat(AP-3058)!: drop conventionalcommits preset, just follow angular conventions (#51) ([e8cc5bf](https://github.com/evolv-ai/react-sdks/commit/e8cc5bf28d934867be3146912f4aa7e09ee46f7c)), closes [#51](https://github.com/evolv-ai/react-sdks/issues/51)
+
+
+### BREAKING CHANGES
+
+* upgraded to react@18 and next@13
+
+
+
+
+
 ## 1.0.17 (2023-07-28)
 
 **Note:** Version bump only for package @evolv/react-sdks
