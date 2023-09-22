@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "prestart": "lerna bootstrap",
+    "prestart": "npm install",
     "start": "npm-run-all --parallel start:watch start:next start:react ",
     "start:next": "lerna run dev --scope @evolv/nextjs-demo",
     "start:react": "lerna run start --scope @evolv/react-demo",

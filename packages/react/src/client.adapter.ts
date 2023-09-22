@@ -30,7 +30,7 @@ export class ClientAdapter {
 
 		this._client = new EvolvClient({
 			autoConfirm: this.isBrowser,
-			analytics: true,
+			analytics: this.isBrowser,
 			clientName: 'react-sdk',
 			clientType: this.isBrowser ? 'direct' : 'proxied',
 			pollForTimeUpdates: this.isBrowser,
