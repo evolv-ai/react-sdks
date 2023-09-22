@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.0.4 (2023-09-22)
+
+
+### Bug Fixes
+
+* turn off analytics for serverside ([#55](https://github.com/evolv-ai/react-sdks/issues/55)) ([cb67b6d](https://github.com/evolv-ai/react-sdks/commit/cb67b6dc91ee37fc638ab0f31bd0c50235f66e41))
+
+
+
+
+
 ## 2.0.3 (2023-09-22)
 
 
