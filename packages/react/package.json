@@ -36,8 +36,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
-    "@evolv/client": "2.7.2-alpha-8b47df6",
+    "@evolv/client": "2.8.2-alpha-da2b113",
     "@evolv/hashing": "^1.1.0",
     "base64-arraybuffer": "^1.0.2",
     "debug": "^4.3.4",

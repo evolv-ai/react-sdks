@@ -28,6 +28,7 @@
     "url": "https://github.com/evolv-ai/react-sdks"
   },
   "engines": {
+    "node": ">=18.0.0",
     "npm": ">=8.5.0"
   },
   "devDependencies": {
