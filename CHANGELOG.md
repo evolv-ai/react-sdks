@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.1.0 (2023-10-19)
+
+
+### Features
+
+* **AP-3446:** support for proxy agent ([#56](https://github.com/evolv-ai/react-sdks/issues/56)) ([ca554d4](https://github.com/evolv-ai/react-sdks/commit/ca554d4526321b8b7c9535a7d97e74f676b9d9a6))
+
+
+
+
+
 ## 2.0.4 (2023-09-22)
 
 

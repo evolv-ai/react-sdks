@@ -1,6 +1,6 @@
 {
   "name": "@evolv/nextjs",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "NextJS SDK for the Evolv AI Platform",
   "license": "Apache-2.0",
   "main": "./dist/index.js",
