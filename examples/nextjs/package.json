@@ -9,7 +9,7 @@
     "lint": "eslint . --ext=.ts,.tsx"
   },
   "dependencies": {
-    "@evolv/nextjs": "*",
+    "@evolv/nextjs": "^1.2.0",
     "cookies-next": "^2.1.1",
     "next": "12.3.4",
     "react": "17.0.2",
