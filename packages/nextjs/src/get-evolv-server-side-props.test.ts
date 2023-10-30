@@ -1,24 +1,28 @@
-import nock from 'nock';
+import _fetchMock from 'jest-fetch-mock';
+
 import { getEvolvServerSideProps } from './get-evolv-server-side-props.js';
 
+const fetchMock: any = _fetchMock;
 
 describe('getEvolvServerSideProps()', () => {
-	const apiUrl = 'https://participants.evolv.ai';
 	const environment = 'env123';
 	const uid = 'uid123';
 
+	beforeAll(() => {
+		fetchMock.enableMocks();
+	});
+
+	afterAll(() => {
+		fetchMock.disableMocks();
+	});
+
 	beforeEach(() => {
-		if (!nock.isActive()) {
-			nock.activate();
-		}
-
-		nock(apiUrl)
-			.post(/events$/)
-			.reply(202);
-
-		nock(apiUrl)
-			.get(/configuration\.json$/)
-			.reply(200, () => {
+		fetchMock.mockResponse(async (req) => {
+			if (req.url.endsWith('events')) {
+				return {
+					status: 202
+				};
+			} else if (req.url.endsWith('configuration.json')) {
 				const data = {
 					_published: 1584475383.3865728,
 					_client: {
@@ -56,12 +60,11 @@ describe('getEvolvServerSideProps()', () => {
 					]
 				};
 
-				return JSON.stringify(data);
-			});
-
-		nock(apiUrl)
-			.get(/allocations$/)
-			.reply(200, () => {
+				return {
+					status: 200,
+					body: JSON.stringify(data)
+				};
+			} else if (req.url.endsWith('allocations')) {
 				const data = [
 					{
 						uid,
@@ -80,12 +83,12 @@ describe('getEvolvServerSideProps()', () => {
 					}
 				];
 
-				return JSON.stringify(data);
-			});
-	});
-
-	afterEach(() => {
-		nock.restore();
+				return {
+					status: 200,
+					body: JSON.stringify(data)
+				};
+			}
+		});
 	});
 
 	it('should populate "hydratedState" with expected values', async () => {
