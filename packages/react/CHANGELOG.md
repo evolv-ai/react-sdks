@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.1.1 (2023-10-30)
+
+
+### Bug Fixes
+
+* babel security update ([#57](https://github.com/evolv-ai/react-sdks/issues/57)) ([ff1ecfb](https://github.com/evolv-ai/react-sdks/commit/ff1ecfbda55339f7e60650d49a3d72586ffd8f05))
+
+
+
+
+
 # 2.1.0 (2023-10-19)
 
 
