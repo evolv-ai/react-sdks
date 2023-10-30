@@ -20,6 +20,9 @@ const config = {
 		'jsx',
 		'json',
 		'd.ts'
+	],
+	setupFilesAfterEnv: [
+		'./support/setup.js'
 	]
 };
 
