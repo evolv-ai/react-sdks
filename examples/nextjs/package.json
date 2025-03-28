@@ -11,7 +11,7 @@
   "dependencies": {
     "@evolv/nextjs": "^2.0.0",
     "cookies-next": "^2.1.1",
-    "next": "14.2.3",
+    "next": "^14.2.25",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   }
