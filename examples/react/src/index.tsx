@@ -11,7 +11,7 @@ const root = createRoot(document.getElementById('root')!);
 const options: EvolvClientOptions = JSON.parse(process.env.REACT_APP_EVOLV_CONFIG ?? '{}');
 
 const remoteContext = {
-	customizeButton: false
+	customizeButton: false,
 };
 
 const uid = getUid();

@@ -1,6 +1,5 @@
 import { ClientAdapter, debug as Debug, EvolvClientOptions, LocalContext, RemoteContext } from '@evolv/react';
-import { GetServerSidePropsContext } from 'next';
-import { GetServerSidePropsResult } from 'next/types';
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 
 import { getClientName, wait } from './utils/index.js';
 

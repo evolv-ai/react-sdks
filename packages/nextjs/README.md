@@ -6,7 +6,7 @@
 SDK for embedding Evolv AI into NextJS applications.
 
 ## Requirements
-* React 16.8.0 or later
+* React 18.0.0 or later
 * NextJS 12.2.5 or later
 * An environment running on [Evolv AI](https://app.evolv.ai)
 
