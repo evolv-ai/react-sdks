@@ -2,8 +2,7 @@ import { jest } from '@jest/globals';
 import _xhrMock from 'xhr-mock';
 import { ClientAdapter } from './client.adapter.js';
 
-
-const xhrMock: any = _xhrMock.default;
+const xhrMock: any = (_xhrMock as any).default || _xhrMock;
 
 jest.setTimeout(10_000);
 
